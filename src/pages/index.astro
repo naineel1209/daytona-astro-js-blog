@@ -1,15 +1,14 @@
 ---
-import PageMeta from "../components/PageMeta.astro";
-import PageLayout from "../layouts/PageLayout.astro";
-import Intro from "../components/Intro.astro";
-import AboutTheTheme from "../components/AboutTheTheme.astro";
-import { SITE_TITLE } from "../config";
+import MainLayout from "../layouts/MainLayout.astro";
+import Test from "../components/Test.astro";
 ---
 
-<PageLayout>
-  <PageMeta title={`${SITE_TITLE} | Web Ninja`} description={``} slot="meta" />
-  <Fragment slot="main">
-    <Intro />
-    <AboutTheTheme />
-  </Fragment>
-</PageLayout>
+<MainLayout>
+  <h1>Welcome to Astro</h1>
+  <p>
+    Astro is a new kind of static site builder that delivers lightning-fast
+    performance with a modern developer experience.
+  </p>
+
+  <Test name="" />
+</MainLayout>
