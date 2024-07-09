@@ -1,0 +1,18 @@
+---
+//this is server side rendering
+import { Image } from 'astro:assets';
+import navLogo from '../images/navlogo.png';
+---
+<nav class="w-[100%] border-2 border-black flex items-center justify-between p-[.5rem] bg-blue-950">
+    <div class="w-10">
+        <Image src={navLogo} alt="this is a navlogo image"/>
+    </div>
+    <div class="text-white text-[1.2rem] flex ">
+        <div><a href="/">Home</a></div>
+        <div><a href="/about">About</a></div>
+    </div>
+</nav>
+
+<script>
+    console.log('this is a navbar component');
+</script>

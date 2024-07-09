@@ -1,6 +1,6 @@
 ---
 
----
+import Navbar from '../components/Navbar.astro';---
 
 <!doctype html>
 <html lang="en">
@@ -13,12 +13,7 @@
   </head>
   <body>
     <header>
-      <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-        </ul>
-      </nav>
+      <Navbar />
     </header>
     <main>
       <slot />
