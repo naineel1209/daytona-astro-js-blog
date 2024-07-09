@@ -1,0 +1,43 @@
+---
+//this is server side rendering
+import { Image } from "astro:assets";
+---
+
+<div class="flex flex-row items-center justify-center gap-[1rem] relative">
+  <Image
+    id="navLogo"
+    src={import("../../../images/navlogo.png")}    alt="this is a navlogo"
+    class="w-10 hover:scale-110 transition-all duration-200"
+  />
+  <div class="relative flex items-center justify-center w-full">
+    <span
+      id="navText"
+      class="opacity-0 w-full text-white gradient-text-shadow font-bold transition-all duration-200"
+    >
+      Naineel Soyantar
+    </span>
+  </div>
+</div>
+
+<script>
+  const navLogoId = document.getElementById("navLogo");
+  const navTextId = document.getElementById("navText");
+
+  {
+    navLogoId &&
+      navTextId &&
+      navLogoId.addEventListener("mouseover", () => {
+        navTextId.classList.remove("opacity-0");
+
+        navTextId.classList.add("opacity-100");
+      });
+  }
+  {
+    navLogoId &&
+      navTextId &&
+      navLogoId.addEventListener("mouseleave", () => {
+        navTextId.classList.remove("opacity-100");
+        navTextId.classList.add("opacity-0");
+      });
+  }
+</script>
