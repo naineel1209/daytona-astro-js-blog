@@ -2,7 +2,17 @@
 //this is server side rendering
 import { Image } from "astro:assets";
 ---
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+  .heading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-optical-sizing: auto;
+    font-style: normal;
+    letter-spacing: .2rem;
+  }
+</style>
 <div class="flex flex-row items-center justify-center gap-[1rem] relative">
   <Image
     id="navLogo"
@@ -12,7 +22,7 @@ import { Image } from "astro:assets";
   <div class="relative flex items-center justify-center w-full">
     <span
       id="navText"
-      class="opacity-0 w-full text-white gradient-text-shadow font-bold transition-all duration-200"
+      class="opacity-0 w-full text-white heading text-xl gradient-text-shadow transition-all duration-200"
     >
       Naineel Soyantar
     </span>
