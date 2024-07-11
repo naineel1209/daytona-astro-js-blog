@@ -1,6 +1,8 @@
 ---
+import Navbar from "../components/Navbar.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../constants.ts";
 
-import Navbar from '../components/Navbar.astro';
+const { title = "Home" } = Astro.props;
 ---
 
 <!doctype html>
@@ -10,13 +12,14 @@ import Navbar from '../components/Navbar.astro';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <meta name="description" content={SITE_DESCRIPTION} />
+    <title>{SITE_TITLE} - {title}</title>
   </head>
   <body>
     <header>
       <Navbar />
     </header>
-    <main class="mx-[10rem]">
+    <main class="mx-[10rem] my-[3rem]">
       <slot />
     </main>
   </body>
