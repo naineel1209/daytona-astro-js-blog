@@ -13,6 +13,15 @@ import { Image } from "astro:assets";
     font-style: normal;
     letter-spacing: 0.2rem;
   }
+
+  .text-shadow-blue {
+    text-shadow:
+        5px 1px 2px rgba(0, 0, 139, 0.3),
+        6px 2px 4px rgba(0, 0, 139, 0.3),
+        7px 3px 6px rgba(0, 0, 139, 0.2),
+        8px 4px 8px rgba(0, 0, 139, 0.2),
+        9px 5px 10px rgba(0, 0, 139, 0.1);
+  }
 </style>
 <div class="flex flex-row items-center justify-center gap-[1rem] relative">
   <Image
@@ -24,7 +33,7 @@ import { Image } from "astro:assets";
   <div class="relative flex items-center justify-center w-full">
     <span
       id="navText"
-      class="opacity-0 w-full text-white heading text-xl gradient-text-shadow transition-all duration-200"
+      class="opacity-0 w-full text-white heading text-xl gradient-text-shadow transition-all duration-200 text-shadow-blue"
     >
       Naineel Soyantar
     </span>

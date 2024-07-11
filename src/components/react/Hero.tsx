@@ -12,22 +12,26 @@ const Hero = () => {
         {
             id: 1,
             name: 'Tech Blogs',
-            bgColor: 'bg-blue-500' // Tailwind CSS background color class
+            bgColor: 'bg-gradient-to-r from-blue-500 to-indigo-500',
+            txtColor: 'text-white',
         },
         {
             id: 2,
             name: 'Tech Tutorials',
-            bgColor: 'bg-green-500'
+            bgColor: 'bg-gradient-to-r from-green-500 to-teal-500',
+            txtColor: 'text-white',
         },
         {
             id: 3,
             name: 'Code Snippets',
-            bgColor: 'bg-red-500'
+            bgColor: 'bg-gradient-to-r from-red-500 to-pink-500',
+            txtColor: 'text-white',
         },
         {
             id: 4,
             name: 'Projects',
-            bgColor: 'bg-yellow-500'
+            bgColor: 'bg-gradient-to-r from-yellow-500 to-orange-500',
+            txtColor: 'text-white',
         },
     ];
 
@@ -67,7 +71,7 @@ const Hero = () => {
                     categories.map((category) => {
                         return (
                             <SwiperSlide key={category.id} className={`swiper-slide justify-center p-[2rem] heading ${category.bgColor} rounded-lg text-center`}>
-                                <span className="text-white text-[5rem]">{category.name}</span>
+                                <span className={`${category.txtColor} text-[5rem]`} >{category.name}</span>
                             </SwiperSlide>
                         )
                     })

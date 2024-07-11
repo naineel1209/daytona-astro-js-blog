@@ -4,81 +4,98 @@ const latestArticles = [
     id: 2,
     title: "Mastering React Hooks",
     date: "2023-03-22",
+    // img: ''
     subTitle: "Enhance your React applications with powerful hooks",
   },
   {
     id: 3,
     title: "Introduction to Machine Learning",
     date: "2023-07-10",
+    // img: ''
     subTitle: "Discover the basics of ML algorithms and applications",
   },
   {
     id: 4,
     title: "CSS Grid Layout: A Complete Guide",
     date: "2023-05-18",
+    // img: ''
     subTitle: "Learn to create complex web layouts with ease",
   },
   {
     id: 5,
     title: "Node.js Fundamentals",
     date: "2023-02-05",
+    // img: ''
     subTitle: "Build scalable server-side applications with Node.js",
   },
   {
     id: 6,
     title: "Getting Started with Docker",
     date: "2023-08-30",
+    // img: ''
     subTitle: "Simplify application deployment with containerization",
   },
   {
     id: 7,
     title: "Vue.js 3: What's New?",
     date: "2023-04-12",
+    // img: ''
     subTitle: "Explore the latest features in Vue.js 3",
   },
   {
     id: 8,
     title: "TypeScript Essentials",
     date: "2023-06-20",
+    // img: ''
     subTitle: "Enhance your JavaScript with static typing",
   },
   {
     id: 9,
     title: "GraphQL: A Modern Approach to APIs",
     date: "2023-01-15",
+    // img: ''
     subTitle: "Learn how to build efficient and flexible APIs",
   },
   {
     id: 10,
     title: "Responsive Web Design Techniques",
     date: "2023-09-05",
+    // img: ''
     subTitle: "Create websites that look great on any device",
   },
   {
     id: 11,
     title: "Cybersecurity Best Practices",
     date: "2023-11-11",
+    // img: ''
     subTitle: "Protect your applications from common security threats",
   },
 ];
 ---
 
 <div class="w-[70%] border-t-2 border-r-2 border-blue-300 px-5 pt-5">
-  <h1 class="text-[2rem] font-bold mb-[1rem] relative inline-block group">
-    <span class="relative z-10">Latest Articles</span>
-    <span
-      class="absolute bottom-0 left-0 w-0 h-5 bg-blue-100 z-[-1] transition-all duration-300 group-hover:w-full"
-    ></span>
-  </h1>
+  <!--<h1 class="text-[2rem] font-bold mb-[1rem] relative inline-block group">-->
+  <!--  <span class="relative z-10">Latest Articles</span>-->
+  <!--  <span-->
+  <!--    class="absolute bottom-0 left-0 w-0 h-5 bg-blue-100 z-[-1] transition-all duration-300 group-hover:w-full"-->
+  <!--  ></span>-->
+  <!--</h1>-->
   <div class="grid grid-rows-1 gap-[1rem] place-items-center">
     {
       // TODO: make the center of the articles constant - by using grid-cols-1
       latestArticles.map((article) => {
         return (
-          <div class="mb-[2rem]">
-            <h2 class="text-[1.5rem] font-bold">{article.title}</h2>
-            <p class="text-[0.9rem] text-gray-500">{article.date}</p>
-            <p class="text-[1rem]">{article.subTitle}</p>
+          <div class="mb-[2rem] w-[50rem] border-2">
+            <div class="p-3 border-b-2">
+              <p class="text-[0.9rem] text-gray-500">{article.date}</p>
+            </div>
+            <div class="p-5">
+              <div class="bg-gray-200 h-[200px] w-[100%] rounded-md"></div>
+            </div>
+            <div class="p-3 border-t-2">
+              <h2 class="text-[1.5rem] font-bold">{article.title}</h2>
+              <p class="text-[1rem]">{article.subTitle}</p>
+            </div>
           </div>
         );
       })
