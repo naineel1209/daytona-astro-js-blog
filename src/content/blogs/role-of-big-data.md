@@ -3,7 +3,7 @@ title: "The Role of Big Data in Modern Business"
 description: "Understanding how big data analytics is driving business decisions and growth."
 author: "Emily Johnson"
 date: "2024-07-10"
-image: "image1.png"
+image: "https://picsum.photos/1980/1080"
 tags: ["big data", "business", "analytics", "technology"]
 slug: "the-role-of-big-data-in-modern-business"
 draft: true

@@ -3,7 +3,7 @@ title: "Advancements in Renewable Energy Technologies"
 description: "Exploring the latest innovations in renewable energy and their impact on sustainability."
 author: "Alex Green"
 date: "2024-07-10"
-image: "image1.png"
+image: "https://picsum.photos/1980/1080"
 tags: ["renewable energy", "sustainability", "technology", "innovation"]
 slug: "advancements-in-renewable-energy-technologies"
 ---

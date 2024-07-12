@@ -1,0 +1,35 @@
+---
+import { getArticle } from "../../data/articles.js";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+let article;
+
+if (Astro.params.slug) {
+  article = await getArticle(Astro.params.slug);
+}
+
+if (!article) {
+  return Astro.redirect("/404");
+}
+
+console.log(article);
+const { data } = article;
+const { title, description, date, author, image } = data;
+const { Content, headings } = await article.render();
+console.log(Content);
+console.log(headings);
+---
+
+<MainLayout title="Articles">
+  <!-- TODO - add a links maker in an article -->
+
+  <p>
+    <a href="/articles">← Back to articles</a>
+    {title}
+    {description}
+    {date}
+    {author}
+    {image && <img src={image} alt={title} />}
+  </p>
+  <Content />
+</MainLayout>

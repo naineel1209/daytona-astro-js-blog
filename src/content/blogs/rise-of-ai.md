@@ -3,7 +3,7 @@ title: "The Rise of Artificial Intelligence"
 description: "Exploring the advancements and implications of AI in modern society."
 author: "John Doe"
 date: "2024-07-10"
-image: "image1.png"
+image: "https://picsum.photos/1980/1080"
 tags: ["AI", "technology", "future", "innovation"]
 ---
 

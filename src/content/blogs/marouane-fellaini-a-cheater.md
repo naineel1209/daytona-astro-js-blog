@@ -3,7 +3,7 @@ title: "Marouane Fellaini - A Cheater"
 description: "An exploration into the controversial moments and accusations of cheating surrounding Marouane Fellaini."
 author: "John Doe"
 date: "2024-07-12"
-image: "fellaini.png"
+image: "https://picsum.photos/1980/1080"
 tags: ["Marouane Fellaini", "football", "controversy", "cheating"]
 slug: "marouane-fellaini-a-cheater"
 draft: true

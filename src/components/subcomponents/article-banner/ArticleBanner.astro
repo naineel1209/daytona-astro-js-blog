@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+
+const { article } = Astro.props;
+const { data } = article as CollectionEntry<"blogs">;
+---
+
+<script client:load>
+  function handleClick(e) {
+    console.log("Element clicked:", e);
+  }
+</script>
+
+<div
+  class="mb-[2rem] w-[80%] border-2 transition-all hover:scale-110 duration-300"
+>
+  <div class="p-3 border-b-2">
+    <p class="text-[0.9rem] text-gray-500">{data.date}</p>
+  </div>
+  <div class="p-5">
+    <Image
+      src={data.image}
+      alt={data.title}
+      class="w-[100%] object-cover"
+      inferSize={true}
+    />
+  </div>
+  <div
+    class="p-3 border-t-2 flex flex-row items-center justify-start gap-[1rem] cursor-pointer"
+    onclick="handleClick(event)"
+  >
+    <div class="w-[80%] border-r-2">
+      <h2 class="text-[1.5rem] font-bold">{data.title}</h2>
+      <p class="text-[1rem]">{data.description}</p>
+    </div>
+    <div class="w-[20%] flex items-center justify-center">
+      <h3 class="text-[1rem] text-slate-500 font-bold">
+        {data.author}
+      </h3>
+    </div>
+  </div>
+</div>

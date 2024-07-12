@@ -36,9 +36,8 @@ const Hero = () => {
     ];
 
     return (
-        <div className={'swiper border-2 mb-[3rem]'}>
-            <style>
-                {`@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+        <div className={'swiper mb-[3rem]'}> <style>
+            {`@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
                 .heading {
                     font - family: "Montserrat", sans-serif;
@@ -48,8 +47,8 @@ const Hero = () => {
                 letter-spacing: 0.2rem;
                 text-transform: uppercase;
                 }`
-                }
-            </style>
+            }
+        </style>
             <Swiper
                 slidesPerView={1}
                 spaceBetween={30}

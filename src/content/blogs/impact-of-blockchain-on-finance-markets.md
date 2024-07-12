@@ -3,7 +3,7 @@ title: "The Impact of Blockchain on Finance"
 description: "Exploring how blockchain technology is transforming the financial industry."
 author: "Michael Brown"
 date: "2024-07-10"
-image: "image1.png"
+image: "https://picsum.photos/1980/1080"
 tags: ["blockchain", "finance", "technology", "innovation"]
 slug: "the-impact-of-blockchain-on-finance"
 ---
