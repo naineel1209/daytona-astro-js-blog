@@ -3,23 +3,17 @@ import MainLayout from "../../layouts/MainLayout.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
-const articles: CollectionEntry<"blogs">[] = await getCollection("blogs");
-console.log(articles);
+// const articles: CollectionEntry<"blogs">[] = await getCollection("blogs");
+// console.log(articles);
+
+const articles = await getCollection("blogs");
+
 ---
 
 <MainLayout title="Articles">
   <h1>Articles</h1>
   <p>Coming soon...</p>
 
-  <ul>
-    {
-      articles.map((article) => (
-        <li>
-          <a href={`/articles/${article.data.slug}`}>{article.data.title}</a>
-        </li>
-      ))
-    }
-  </ul>
 </MainLayout>
 
 <!-- TODO getStaicPaths here and SSR -  https://docs.astro.build/en/guides/content-collections/ -->

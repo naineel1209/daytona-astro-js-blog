@@ -20,10 +20,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwindcss": "^3.4.4",
-    "typescript": "^5.5.3"
-  },
-  "devDependencies": {
-    "@types/swiper": "^6.0.0",
+    "typescript": "^5.5.3",
     "swiper": "^11.1.4"
   }
 }
