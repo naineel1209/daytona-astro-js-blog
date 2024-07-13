@@ -5,7 +5,6 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/mousewheel';
 import 'swiper/css/autoplay';
-import { useEffect } from 'react';
 
 const Hero = () => {
     const categories = [

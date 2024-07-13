@@ -4,7 +4,7 @@ const { tags } = Astro.props;
 
 <div class="flex items-center gap-[.5rem] mt-[.5rem] mb-[2rem]">
   {
-    tags.map((tag) => {
+    tags.map((tag: string) => {
       return (
         <span class="bg-blue-100 text-blue-500 px-2 py-1 rounded-md text-sm hover:scale-105 transition-all duration-200 hover:bg-blue-500 hover:text-blue-100 font-medium cursor-pointer">
           {tag}
