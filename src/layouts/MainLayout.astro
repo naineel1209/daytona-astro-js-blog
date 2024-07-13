@@ -2,7 +2,7 @@
 import Navbar from "../components/Navbar.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../constants.ts";
 
-const { title = "Home" } = Astro.props;
+const { title = "Home", margin_small = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -10,6 +10,16 @@ const { title = "Home" } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap"
+      rel="stylesheet"
+    />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={SITE_DESCRIPTION} />
@@ -19,7 +29,7 @@ const { title = "Home" } = Astro.props;
     <header>
       <Navbar />
     </header>
-    <main class="mx-[10rem] my-[3rem]">
+    <main class={`${margin_small ? "mx-[5rem]" : "mx-[10rem]"} my-[3rem]`}>
       <slot />
     </main>
   </body>
