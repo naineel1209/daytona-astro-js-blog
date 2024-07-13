@@ -1,12 +1,23 @@
 ---
+import { getArticles } from "../../../data/articles";
 import HighlightedHeading from "../../utils/HighlightedHeading.astro";
+import StarredArticleBanner from "../article-utils/StarredArticleBanner.astro";
+
+const { class: classList } = Astro.props;
+
+let articles = await getArticles();
+
+//only return those articles that are starred
+articles = articles.filter((article) => article.data.starred);
 ---
 
-<div class="w-[30%] border-t-2 border-blue-1980 px-5 pt-5">
+<div class={classList + " px-5 pt-5"}>
   <HighlightedHeading title="Starred Articles" />
-  <div class="mb-[2rem] bg-gray-200 h-[200px] w-[100%] rounded-md"></div>
-  <div class="mb-[2rem] bg-gray-200 h-[200px] w-[100%] rounded-md"></div>
-  <div class="mb-[2rem] bg-gray-200 h-[200px] w-[100%] rounded-md"></div>
-  <div class="mb-[2rem] bg-gray-200 h-[200px] w-[100%] rounded-md"></div>
-  <div class="mb-[2rem] bg-gray-200 h-[200px] w-[100%] rounded-md"></div>
+  <div class="grid grid-rows-1 gap-5">
+    {
+      articles.map((article) => {
+        return <StarredArticleBanner article={article} />;
+      })
+    }
+  </div>
 </div>

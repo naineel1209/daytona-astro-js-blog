@@ -1,6 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
+import HighlightedHeading from "../../components/utils/HighlightedHeading.astro";
+import ArticleBanner from "../../components/subcomponents/article-utils/ArticleBanner.astro";
 
 // const articles: CollectionEntry<"blogs">[] = await getCollection("blogs");
 // console.log(articles);
@@ -10,6 +12,18 @@ const articles = await getCollection("blogs");
 
 <!-- !You have to manually update the output of the astro project by setting output to server or static or hybrid depending on the requirements --><!-- TODO - add a search bar to sarch the article -->
 <MainLayout title="Articles">
-  <h1>Articles</h1>
-  <p>Coming soon...</p>
+  <div
+    class="border-t-2 border-r-2 rounded-tr-[1rem] border-blue-300 p-[3rem] pt-[1rem]"
+  >
+    <div class="flex items-center justify-between pb-[2rem]">
+      <HighlightedHeading title="Articles" />
+    </div>
+    <div class="grid grid-cols-2 gap-[1rem] place-items-center">
+      {
+        articles.map((article) => {
+          return <ArticleBanner article={article} />;
+        })
+      }
+    </div>
+  </div>
 </MainLayout>

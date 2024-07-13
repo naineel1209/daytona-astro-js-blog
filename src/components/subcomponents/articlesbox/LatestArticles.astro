@@ -2,13 +2,19 @@
 import { LATEST_ARTICLE_LIMIT } from "../../../constants";
 import { getArticles } from "../../../data/articles.ts";
 import HighlightedHeading from "../../utils/HighlightedHeading.astro";
-import ArticleBanner from "../article-banner//ArticleBanner.astro";
+import ArticleBanner from "../article-utils//ArticleBanner.astro";
 
-const articles = await getArticles(LATEST_ARTICLE_LIMIT);
+let articles = await getArticles();
+
+articles = articles
+  .sort((a, b) => {
+    // if a is after b, return a negative number
+    return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+  })
+  .slice(0, LATEST_ARTICLE_LIMIT);
 ---
 
-<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-<div class="w-[70%] border-t-2 border-r-2 border-blue-1980 p-[3rem] pt-[1rem]">
+<div class="w-[70%] border-t-2 border-r-2 border-blue-300 p-[3rem] pt-[1rem]">
   <div class="flex items-center justify-between pb-[2rem]">
     <HighlightedHeading title="Latest Articles" />
   </div>

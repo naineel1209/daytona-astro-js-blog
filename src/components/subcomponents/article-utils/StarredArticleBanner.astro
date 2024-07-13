@@ -1,0 +1,13 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+const { article } = Astro.props;
+const { data, slug } = article as CollectionEntry<"blogs">;
+---
+
+<a
+  href={`/articles/${slug}`}
+  class="underline text-blue-500 text-ellipsis inline"
+>
+  {data.title}<i class="bx bxs-plane-alt bx-burst bx-flip-horizontal mx-2"></i>
+</a>

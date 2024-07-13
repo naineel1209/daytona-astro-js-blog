@@ -6,6 +6,7 @@ date: "2024-07-14"
 image: "https://picsum.photos/1980/1080"
 tags: ["blockchain", "finance", "technology", "innovation"]
 slug: "let-s-build-a-production-ready-logger"
+starred: true
 ---
 
 Hi guys, long time no see...

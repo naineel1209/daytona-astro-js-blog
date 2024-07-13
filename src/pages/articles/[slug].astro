@@ -4,6 +4,7 @@ import { getArticle } from "../../data/articles.js";
 import { formatDate } from "../../utils.ts";
 import MainLayout from "../../layouts/MainLayout.astro";
 import Tags from "../../components/utils/Tags.astro";
+import StarredArticles from "../../components/subcomponents/articlesbox/StarredArticles.astro";
 
 let article;
 
@@ -45,8 +46,8 @@ const { Content, headings } = await article.render();
 </script>
 
 <MainLayout title={title} margin_small={true}>
-  <div class="flex">
-    <div class="w-[80%]">
+  <div class="flex gap-[1rem]">
+    <div class="w-[70%]">
       <a
         href="/articles"
         class="font-bold text-blue-500 text-xl flex items-center gap-[.5rem]"
@@ -74,7 +75,9 @@ const { Content, headings } = await article.render();
         </div>
       </div>
     </div>
-    <div class="w-[20%]">This is pop-up</div>
+    <div class="w-[30%] h-full mt-[3.5rem]">
+      <StarredArticles class:list={["border-t-2 border-l-2 border-blue-300"]} />
+    </div>
   </div>
 </MainLayout>
 
