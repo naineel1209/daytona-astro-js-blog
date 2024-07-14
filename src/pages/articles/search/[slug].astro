@@ -1,0 +1,60 @@
+---
+import Search from "../../../components/Search.astro";
+import ArticleBanner from "../../../components/subcomponents/article-utils/ArticleBanner.astro";
+import HighlightedHeading from "../../../components/utils/HighlightedHeading.astro";
+import { getArticles } from "../../../data/articles";
+import MainLayout from "../../../layouts/MainLayout.astro";
+
+let searchTerm: string = "";
+
+if (Astro.params.slug) {
+  searchTerm = Astro.params.slug;
+}
+
+if (!searchTerm.trim()) {
+  return Astro.redirect("/404");
+}
+
+const articles = await getArticles();
+
+const filteredArticles = articles.filter((article) => {
+  const lowercasedSearchTerm = searchTerm.toLowerCase();
+
+  return (
+    article.data.title.toLowerCase().includes(lowercasedSearchTerm) ||
+    article.data.description.toLowerCase().includes(lowercasedSearchTerm) ||
+    article.data.author.toLowerCase().includes(lowercasedSearchTerm) ||
+    article.data.tags.some((tag) =>
+      tag.toLowerCase().includes(lowercasedSearchTerm)
+    )
+  );
+});
+---
+
+<MainLayout title="Articles">
+  <div class="my-[2rem] w-[100%]">
+    <Search prefillVal={searchTerm} />
+  </div>
+  <div
+    class="border-t-2 border-r-2 rounded-tr-[1rem] border-blue-300 p-[3rem] pt-[1rem]"
+  >
+    <div class="flex items-center justify-between pb-[2rem]">
+      <HighlightedHeading title="Searched Articles" />
+    </div>
+
+    {
+      filteredArticles.length === 0 && (
+        <div class="text-center">
+          <p class="text-2xl font-semibold text-slate-900">No articles found</p>
+        </div>
+      )
+    }
+    <div class="grid grid-cols-2 gap-[1rem] place-items-center">
+      {
+        filteredArticles.map((article) => {
+          return <ArticleBanner article={article} />;
+        })
+      }
+    </div>
+  </div>
+</MainLayout>

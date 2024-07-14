@@ -13,6 +13,7 @@ if (Astro.params.slug) {
   article = await getArticle(Astro.params.slug);
 }
 
+//TODO this will never run as empty slug will be sent to the
 if (!article) {
   return Astro.redirect("/404");
 }

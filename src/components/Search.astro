@@ -1,0 +1,34 @@
+---
+const { prefillVal } = Astro.props;
+---
+
+<script>
+  const searchBarForm = document.getElementById(
+    "search-bar-form"
+  ) as HTMLFormElement;
+
+  searchBarForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const searchQuery = new FormData(searchBarForm).get("search-query");
+
+    if (searchQuery) {
+      window.location.href = `/articles/search/${searchQuery}`;
+    }
+  });
+</script>
+
+<form id="search-bar-form" class="w-[100%] flex">
+  <input
+    type="text"
+    value={prefillVal}
+    name="search-query"
+    placeholder="Search articles"
+    class="border-2 border-blue-500 p-2 rounded-md w-[50%] border-r-0 rounded-r-none"
+  />
+  <button
+    type="submit"
+    class="border-2 border-blue-500 border-l-0 rounded-l-none bg-blue-500 text-white p-2 rounded-md w-[10%] hover:bg-blue-600 hover:border-blue-600 transition-all duration-300"
+  >
+    Search
+  </button>
+</form>

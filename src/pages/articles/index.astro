@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
 import HighlightedHeading from "../../components/utils/HighlightedHeading.astro";
 import ArticleBanner from "../../components/subcomponents/article-utils/ArticleBanner.astro";
+import Search from "../../components/Search.astro";
 
 // const articles: CollectionEntry<"blogs">[] = await getCollection("blogs");
 // console.log(articles);
@@ -12,6 +13,9 @@ const articles = await getCollection("blogs");
 
 <!-- !You have to manually update the output of the astro project by setting output to server or static or hybrid depending on the requirements --><!-- TODO - add a search bar to sarch the article -->
 <MainLayout title="Articles">
+  <div class="my-[2rem] w-[100%]">
+    <Search prefillVal={""} />
+  </div>
   <div
     class="border-t-2 border-r-2 rounded-tr-[1rem] border-blue-300 p-[3rem] pt-[1rem]"
   >
