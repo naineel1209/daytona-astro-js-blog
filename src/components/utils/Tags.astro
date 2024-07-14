@@ -1,14 +1,33 @@
 ---
-const { tags } = Astro.props;
+const { tags, class: classList, starred } = Astro.props;
+const shiftedTags = [...tags];
+
+if (starred) {
+  shiftedTags.unshift("starred");
+}
 ---
 
-<div class="flex items-center gap-[.5rem] mt-[.5rem] mb-[2rem]">
+<div class={`${classList}` + " flex items-center gap-[.5rem]"}>
   {
-    tags.map((tag: string) => {
+    shiftedTags.map((tag: string) => {
+      if (tag === "starred") {
+        return (
+          <a
+            href={"/articles/starred"}
+            class="bg-yellow-100 text-yellow-500 px-2 py-1 rounded-md text-sm hover:scale-105 transition-all duration-200 hover:bg-yellow-500 hover:text-yellow-100 font-medium cursor-pointer"
+          >
+            {tag}
+          </a>
+        );
+      }
+
       return (
-        <span class="bg-blue-100 text-blue-500 px-2 py-1 rounded-md text-sm hover:scale-105 transition-all duration-200 hover:bg-blue-500 hover:text-blue-100 font-medium cursor-pointer">
+        <a
+          href={"/articles/search/" + tag}
+          class="bg-blue-100 text-blue-500 px-2 py-1 rounded-md text-sm hover:scale-105 transition-all duration-200 hover:bg-blue-500 hover:text-blue-100 font-medium cursor-pointer"
+        >
           {tag}
-        </span>
+        </a>
       );
     })
   }

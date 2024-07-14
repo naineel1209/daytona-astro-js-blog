@@ -19,7 +19,7 @@ if (!article) {
 }
 
 const { data } = article;
-const { title, description, date, author, image, tags } = data;
+const { title, description, date, author, image, tags, starred } = data;
 const { Content } = await article.render();
 ---
 
@@ -48,7 +48,11 @@ const { Content } = await article.render();
         <p class="text-gray-500 text-md font-medium my-[.5rem]">
           {formatDate(date)} - <a href={`/authors/${author}`}>{author}</a>
         </p>
-        <Tags tags={tags} />
+        <Tags
+          tags={tags}
+          class:list={["mt-[.5rem] mb-[2rem]"]}
+          starred={starred}
+        />
         <div class="markdown-body">
           <Content />
         </div>
