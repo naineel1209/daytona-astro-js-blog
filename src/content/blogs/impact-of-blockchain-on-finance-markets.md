@@ -33,5 +33,5 @@ Blockchain technology has the potential to transform finance by making transacti
 ---
 
 _Author: Michael Brown_  
-_Date: July 10, 2024_  
+_Date: July 10, 2024,_  
 _Tags: blockchain, finance, technology, innovation_
