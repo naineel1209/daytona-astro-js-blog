@@ -1,17 +1,21 @@
 ---
-import { getCollection } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
 import HighlightedHeading from "../../components/utils/HighlightedHeading.astro";
 import ArticleBanner from "../../components/subcomponents/article-utils/ArticleBanner.astro";
 import Search from "../../components/Search.astro";
+import { sanityClient } from "sanity:client";
+import {getArticles} from '../../data/articles';
 
-// const articles: CollectionEntry<"blogs">[] = await getCollection("blogs");
-// console.log(articles);
+let articles:any = await getArticles();
 
-const articles = await getCollection("blogs");
+const sanityArticles = await sanityClient.fetch(`*`);
+
+
+console.log('sanityArticles')
+console.log(sanityArticles);
 ---
 
-<!-- !You have to manually update the output of the astro project by setting output to server or static or hybrid depending on the requirements --><!-- TODO - add a search bar to sarch the article -->
+<!-- !You have to manually update the output of the astro project by setting output to server or static or hybrid depending on the requirements -->
 <MainLayout title="Articles">
   <div class="my-[2rem] w-[100%]">
     <Search prefillVal={""} />
