@@ -1,17 +1,13 @@
 ---
-import MainLayout from "../../layouts/MainLayout.astro";
-import HighlightedHeading from "../../components/utils/HighlightedHeading.astro";
-import ArticleBanner from "../../components/subcomponents/article-utils/ArticleBanner.astro";
 import Search from "../../components/Search.astro";
-import { sanityClient } from "sanity:client";
-import {getArticles} from '../../data/articles';
+import ArticleBanner from "../../components/subcomponents/article-utils/ArticleBanner.astro";
+import HighlightedHeading from "../../components/utils/HighlightedHeading.astro";
+import { getArticles, getSanityArticles } from "../../data/articles";
+import MainLayout from "../../layouts/MainLayout.astro";
 
-let articles:any = await getArticles();
+let articles: any = await getArticles();
 
-const sanityArticles = await sanityClient.fetch(`*`);
-
-
-console.log('sanityArticles')
+const sanityArticles = await getSanityArticles();
 console.log(sanityArticles);
 ---
 
@@ -28,7 +24,7 @@ console.log(sanityArticles);
     </div>
     <div class="grid grid-cols-2 gap-[1rem] place-items-center">
       {
-        articles.map((article) => {
+        articles.map((article: any) => {
           return <ArticleBanner article={article} />;
         })
       }

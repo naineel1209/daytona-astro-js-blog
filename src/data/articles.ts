@@ -2,7 +2,7 @@ import { getCollection, getEntryBySlug } from "astro:content";
 // @ts-ignore
 import { sanityClient } from 'sanity:client';
 
-export const getArticles = async (limit?: number) => {
+export const getArticles = async (limit?: number, page?: number) => {
   let articles = await getCollection("blogs");
 
   if (limit) {
@@ -12,14 +12,33 @@ export const getArticles = async (limit?: number) => {
   return articles;
 };
 
-export const getSanityArticles = async (limit ?: number) => {
-  let articles = await sanityClient.fetch(`*[_type == "article"]{
+export const getSanityArticles = async (limit?: number, page?: number) => {
+  if (limit && limit < 1) {
+    limit = 1;
+  }
+
+  if (page && page < 1) {
+    page = 1;
+  }
+
+  limit = limit || 1;
+  page = page || 2;
+
+  const sanityArticles = await sanityClient.fetch(`*[_type == "article"][${(page - 1) * limit}...${page * limit}]{
+  _id,
   title,
   description,
   author,
-  content,
+  date,
+  image,
+  tags,
   slug,
-}`);
+  starred,
+  draft
+}
+`);
+
+  return sanityArticles;
 }
 
 export const getArticle = async (slug: string) => {
