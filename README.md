@@ -1,5 +1,12 @@
 # Astro Starter Kit: Minimal
 
+## TODOs
+
+- make custom components for solo article page
+- make author schema
+- make like and comment schema
+- make shareable button
+
 ```sh
 npm create astro@latest -- --template minimal
 ```
