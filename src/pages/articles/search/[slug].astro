@@ -2,7 +2,7 @@
 import Search from "../../../components/Search.astro";
 import ArticleBanner from "../../../components/subcomponents/article-utils/ArticleBanner.astro";
 import HighlightedHeading from "../../../components/utils/HighlightedHeading.astro";
-import { getArticles } from "../../../data/articles";
+import { getSanityArticlesBySearch } from "../../../data/articles";
 import MainLayout from "../../../layouts/MainLayout.astro";
 
 let searchTerm: string = "";
@@ -15,20 +15,20 @@ if (!searchTerm.trim()) {
   return Astro.redirect("/404");
 }
 
-const articles = await getArticles();
+const articles = await getSanityArticlesBySearch(searchTerm);
 
-const filteredArticles = articles.filter((article) => {
-  const lowercasedSearchTerm = searchTerm.toLowerCase();
+// const filteredArticles = articles.filter((article) => {
+//   const lowercasedSearchTerm = searchTerm.toLowerCase();
 
-  return (
-    article.data.title.toLowerCase().includes(lowercasedSearchTerm) ||
-    article.data.description.toLowerCase().includes(lowercasedSearchTerm) ||
-    article.data.author.toLowerCase().includes(lowercasedSearchTerm) ||
-    article.data.tags.some((tag) =>
-      tag.toLowerCase().includes(lowercasedSearchTerm)
-    )
-  );
-});
+//   return (
+//     article.data.title.toLowerCase().includes(lowercasedSearchTerm) ||
+//     article.data.description.toLowerCase().includes(lowercasedSearchTerm) ||
+//     article.data.author.toLowerCase().includes(lowercasedSearchTerm) ||
+//     article.data.tags.some((tag) =>
+//       tag.toLowerCase().includes(lowercasedSearchTerm)
+//     )
+//   );
+// });
 ---
 
 <MainLayout title="Articles">
@@ -43,7 +43,7 @@ const filteredArticles = articles.filter((article) => {
     </div>
 
     {
-      filteredArticles.length === 0 && (
+      articles.length === 0 && (
         <div class="text-center">
           <p class="text-2xl font-semibold text-slate-900">No articles found</p>
         </div>
@@ -51,7 +51,7 @@ const filteredArticles = articles.filter((article) => {
     }
     <div class="grid grid-cols-2 gap-[1rem] place-items-center">
       {
-        filteredArticles.map((article) => {
+        articles.map((article) => {
           return <ArticleBanner article={article} />;
         })
       }
