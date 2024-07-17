@@ -1,13 +1,22 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import type { TArticles } from "../../../types/types";
 
-const { article } = Astro.props;
-const { data, slug } = article as CollectionEntry<"blogs">;
+const article: TArticles = Astro.props.article;
+
+if (!article) {
+  throw new Error("Article data is missing");
+}
+
+const {
+  slug: { current: articleSlug },
+} = article;
 ---
 
 <a
-  href={`/articles/${slug}`}
+  href={`/articles/${articleSlug}`}
   class="underline text-blue-500 text-ellipsis inline"
 >
-  {data.title}<i class="bx bxs-plane-alt bx-burst bx-flip-horizontal mx-2"></i>
+  {article.title}<i class="bx bxs-plane-alt bx-burst bx-flip-horizontal mx-2"
+  ></i>
 </a>

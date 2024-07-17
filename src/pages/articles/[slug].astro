@@ -26,226 +26,229 @@ const { Content } = await article.render();
 <MainLayout title={title} margin_small={true}>
   <div class="flex gap-[1rem]">
     <div class="w-[70%]">
-      <a
-        href="/articles"
-        class="font-bold text-blue-500 text-xl flex items-center gap-[.5rem]"
-      >
-        <i class="bx bxs-left-arrow bx-flashing"></i>
-        Back to articles
-      </a>
-      <!-- TODO - add a links maker in an article -->
-      <Image
-        src={image as string}
-        alt={title + " cover"}
-        class="w-full h-80 mx-auto mt-[2rem] mb-[1rem] rounded-tl-lg rounded-tr-lg object-cover"
-        inferSize={true}
-      />
-      <div class="w-full mx-auto">
-        <HighlightedHeading title={title} />
-        <div class="mt-[-1rem]">
-          <p class="text-lg font-semibold">{description}</p>
-        </div>
-        <p class="text-gray-500 text-md font-medium my-[.5rem]">
-          {formatDate(date)} - <a href={`/authors/${author}`}>{author}</a>
-        </p>
-        <Tags
-          tags={tags}
-          class:list={["mt-[.5rem] mb-[2rem]"]}
-          starred={starred}
+      <div class="border-b-4">
+        <a
+          href="/articles"
+          class="font-bold text-blue-500 text-xl flex items-center gap-[.5rem]"
+        >
+          <i class="bx bxs-left-arrow bx-flashing"></i>
+          Back to articles
+        </a>
+
+        <Image
+          src={image as string}
+          alt={title + " cover"}
+          class="w-full h-80 mx-auto mt-[2rem] mb-[1rem] rounded-tl-lg rounded-tr-lg object-cover"
+          inferSize={true}
         />
-        <div class="markdown-body">
-          <Content />
+        <div class="w-full text-center">
+          <HighlightedHeading title={title} />
+          <div class="mt-[-1rem]">
+            <p class="text-lg font-semibold">{description}</p>
+          </div>
+          <p class="text-gray-500 text-md font-medium my-[.5rem]">
+            {formatDate(date)} - <a href={`/authors/${author}`}>{author}</a>
+          </p>
+          <Tags
+            tags={tags}
+            class:list={["mt-[.5rem] mb-[2rem]"]}
+            starred={starred}
+          />
         </div>
+      </div>
+      <!-- TODO - add a links maker in an article -->
+      <div class="markdown-body mt-2">
+        <Content />
       </div>
     </div>
     <div class="w-[30%] h-full mt-[3.5rem]">
       <StarredArticles class:list={["border-t-2 border-l-2 border-blue-300"]} />
     </div>
   </div>
-</MainLayout>
 
-<!-- // @ts-nocheck -->
-<script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("pre").forEach((pre) => {
-      const button = document.createElement("button");
-      button.innerText = "Copy";
-      pre.classList.add("relative");
-      button.className = "copy-button";
+  <!-- // @ts-nocheck -->
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("pre").forEach((pre) => {
+        const button = document.createElement("button");
+        button.innerText = "Copy";
+        pre.classList.add("relative");
+        button.className = "copy-button";
 
-      button.addEventListener("click", () => {
-        const childCode = pre.children[0];
-        const code = childCode.innerText;
-        navigator.clipboard.writeText(code).then(() => {
-          button.innerText = "Copied!";
-          setTimeout(() => {
-            button.innerText = "Copy";
-          }, 2000);
+        button.addEventListener("click", () => {
+          const childCode = pre.children[0];
+          const code = childCode.innerText;
+          navigator.clipboard.writeText(code).then(() => {
+            button.innerText = "Copied!";
+            setTimeout(() => {
+              button.innerText = "Copy";
+            }, 2000);
+          });
         });
+
+        pre.style.position = "relative";
+        pre.appendChild(button);
       });
-
-      pre.style.position = "relative";
-      pre.appendChild(button);
     });
-  });
-</script>
+  </script>
 
-<style is:global>
-  /* styles.css */
+  <style is:global>
+    /* styles.css */
 
-  /* Base styles for the copy button */
-  .copy-button {
-    background-color: #007bff;
-    color: white;
+    /* Base styles for the copy button */
+    .copy-button {
+      background-color: #007bff;
+      color: white;
 
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    padding: 0.5rem 0.75rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-  /* Hover styles for the copy button */
-  .copy-button:hover {
-    background-color: #0056b3;
-  }
+    /* Hover styles for the copy button */
+    .copy-button:hover {
+      background-color: #0056b3;
+    }
 
-  /* General Styles */
-  .markdown-body {
-    font-family: "Sofia Sans", sans-serif;
-    line-height: 1.6;
-    color: #333;
-    max-width: 800px;
-    padding: 1rem;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-  }
+    /* General Styles */
+    .markdown-body {
+      font-family: "Sofia Sans", sans-serif;
+      line-height: 1.6;
+      color: #333;
+      text-align: justify;
+      padding: 1rem;
+      font-optical-sizing: auto;
+      font-weight: 500;
+      font-style: normal;
+    }
 
-  /* Headings */
-  h1 {
-    font-size: 2.5rem;
-    font-family: "Sofia Sans", sans-serif;
-    margin-bottom: 1rem;
-  }
+    /* Headings */
+    h1 {
+      font-size: 2.5rem;
+      font-family: "Sofia Sans", sans-serif;
+      margin-bottom: 1rem;
+    }
 
-  .markdown-body h2 {
-    font-size: 2rem;
-    font-weight: bolder;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 0.5rem;
-  }
+    .markdown-body h2 {
+      font-size: 2rem;
+      font-weight: bolder;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.5rem;
+    }
 
-  .markdown-body h3 {
-    font-size: 1.75rem;
-    font-weight: bolder;
-    margin-bottom: 0.75rem;
-  }
+    .markdown-body h3 {
+      font-size: 1.75rem;
+      font-weight: bolder;
+      margin-bottom: 0.75rem;
+    }
 
-  .markdown-body h4 {
-    font-size: 1.5rem;
-    font-weight: bolder;
-    margin-bottom: 0.5rem;
-  }
+    .markdown-body h4 {
+      font-size: 1.5rem;
+      font-weight: bolder;
+      margin-bottom: 0.5rem;
+    }
 
-  .markdown-body h5 {
-    font-size: 1.25rem;
-    font-weight: bolder;
-    margin-bottom: 0.5rem;
-  }
+    .markdown-body h5 {
+      font-size: 1.25rem;
+      font-weight: bolder;
+      margin-bottom: 0.5rem;
+    }
 
-  .markdown-body h6 {
-    font-size: 1rem;
-    font-weight: bolder;
-    margin-bottom: 0.5rem;
-  }
+    .markdown-body h6 {
+      font-size: 1rem;
+      font-weight: bolder;
+      margin-bottom: 0.5rem;
+    }
 
-  /* Paragraphs */
-  .markdown-body p {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-  }
+    /* Paragraphs */
+    .markdown-body p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
 
-  /* Lists */
-  .markdown-body ul,
-  .markdown-body ol {
-    padding-left: 2rem;
-    margin-bottom: 1rem;
-  }
+    /* Lists */
+    .markdown-body ul,
+    .markdown-body ol {
+      padding-left: 2rem;
+      margin-bottom: 1rem;
+    }
 
-  .markdown-body ul li,
-  .markdown-body ol li {
-    margin-bottom: 0.5rem;
-  }
+    .markdown-body ul li,
+    .markdown-body ol li {
+      margin-bottom: 0.5rem;
+    }
 
-  .markdown-body ol {
-    list-style-type: none; /* Remove default numbering */
-  }
+    .markdown-body ol {
+      list-style-type: none; /* Remove default numbering */
+    }
 
-  .markdown-body ol li {
-    counter-increment: li; /* Increment the counter */
-  }
+    .markdown-body ol li {
+      counter-increment: li; /* Increment the counter */
+    }
 
-  /* Links */
-  .markdown-body a {
-    color: #0366d6;
-    text-decoration: none;
-  }
+    /* Links */
+    .markdown-body a {
+      color: #0366d6;
+      text-decoration: none;
+    }
 
-  .markdown-body a:hover {
-    text-decoration: underline;
-  }
+    .markdown-body a:hover {
+      text-decoration: underline;
+    }
 
-  /* Blockquotes */
-  .markdown-body blockquote {
-    margin: 1rem 0;
-    padding: 0.5rem 1rem;
-    background-color: #f9f9f9;
-    border-left: 4px solid #ccc;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  }
+    /* Blockquotes */
+    .markdown-body blockquote {
+      margin: 1rem 0;
+      padding: 0.5rem 1rem;
+      background-color: #f9f9f9;
+      border-left: 4px solid #ccc;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    }
 
-  /* Code Blocks */
-  .markdown-body pre {
-    padding: 1rem;
-    border-radius: 5px;
-    overflow: auto;
-    margin-bottom: 1rem;
-  }
+    /* Code Blocks */
+    .markdown-body pre {
+      padding: 1rem;
+      border-radius: 5px;
+      overflow: auto;
+      margin-bottom: 1rem;
+    }
 
-  .markdown-body code {
-    padding: 0.2rem 0.4rem;
-    border-radius: 3px;
-  }
+    .markdown-body code {
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+    }
 
-  /* Tables */
-  .markdown-body table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1rem;
-  }
+    /* Tables */
+    .markdown-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+    }
 
-  .markdown-body th,
-  .markdown-body td {
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
+    .markdown-body th,
+    .markdown-body td {
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
 
-  .markdown-body th {
-    background-color: #f3f3f3;
-  }
+    .markdown-body th {
+      background-color: #f3f3f3;
+    }
 
-  /* Horizontal Rules */
-  .markdown-body hr {
-    border: 0;
-    height: 1px;
-    background: #eee;
-    margin: 2rem 0;
-  }
-</style>
+    /* Horizontal Rules */
+    .markdown-body hr {
+      border: 0;
+      height: 1px;
+      background: #eee;
+      margin: 2rem 0;
+    }
+  </style>
+</MainLayout>

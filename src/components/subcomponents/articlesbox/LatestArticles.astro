@@ -1,17 +1,9 @@
 ---
-import { LATEST_ARTICLE_LIMIT } from "../../../constants";
-import { getArticles } from "../../../data/articles.ts";
+import { getLatestSanityArticles } from "../../../data/articles.ts";
 import HighlightedHeading from "../../utils/HighlightedHeading.astro";
 import ArticleBanner from "../article-utils//ArticleBanner.astro";
 
-let articles = await getArticles();
-
-articles = articles
-  .sort((a, b) => {
-    // if a is after b, return a negative number
-    return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
-  })
-  .slice(0, LATEST_ARTICLE_LIMIT);
+let articles = await getLatestSanityArticles();
 ---
 
 <div class="w-[80%] border-t-2 border-r-2 border-blue-300 p-[3rem] pt-[1rem]">

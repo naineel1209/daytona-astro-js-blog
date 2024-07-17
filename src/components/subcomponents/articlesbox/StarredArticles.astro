@@ -1,14 +1,11 @@
 ---
-import { getArticles } from "../../../data/articles";
+import { getArticles, getSanityStarredArticles } from "../../../data/articles";
 import HighlightedHeading from "../../utils/HighlightedHeading.astro";
 import StarredArticleBanner from "../article-utils/StarredArticleBanner.astro";
 
 const { class: classList } = Astro.props;
 
-let articles = await getArticles();
-
-//only return those articles that are starred
-articles = articles.filter((article) => article.data.starred);
+const articles = await getSanityStarredArticles();
 ---
 
 <div class={classList + " px-5 pt-5"}>

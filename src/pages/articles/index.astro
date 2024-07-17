@@ -4,11 +4,12 @@ import ArticleBanner from "../../components/subcomponents/article-utils/ArticleB
 import HighlightedHeading from "../../components/utils/HighlightedHeading.astro";
 import { getArticles, getSanityArticles } from "../../data/articles";
 import MainLayout from "../../layouts/MainLayout.astro";
+import type { TArticles } from "../../types/types";
 
-let articles: any = await getArticles();
+const limit = Astro.url.searchParams.get("limit");
+const page = Astro.url.searchParams.get("page");
 
-const sanityArticles = await getSanityArticles();
-console.log(sanityArticles);
+const sanityArticles = await getSanityArticles(Number(limit), Number(page));
 ---
 
 <!-- !You have to manually update the output of the astro project by setting output to server or static or hybrid depending on the requirements -->
@@ -24,7 +25,7 @@ console.log(sanityArticles);
     </div>
     <div class="grid grid-cols-2 gap-[1rem] place-items-center">
       {
-        articles.map((article: any) => {
+        sanityArticles.map((article: TArticles) => {
           return <ArticleBanner article={article} />;
         })
       }

@@ -27,3 +27,4 @@ pnpm-debug.log*
 .vercel
 
 *.todo
+sanity.config.ts

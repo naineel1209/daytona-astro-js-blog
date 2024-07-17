@@ -7,11 +7,12 @@ if (starred) {
 }
 ---
 
-<div class={`${classList}` + " flex items-center gap-[.5rem]"}>
+<div class={`${classList}` + " flex items-center justify-center gap-[.5rem]"}>
   {
     shiftedTags.map((tag: string) => {
       if (tag === "starred") {
         return (
+          // TODO - add a link to starred articles
           <a
             href={"/articles/starred"}
             class="bg-yellow-100 text-yellow-500 px-2 py-1 rounded-md text-sm hover:scale-105 transition-all duration-200 hover:bg-yellow-500 hover:text-yellow-100 font-medium cursor-pointer"
