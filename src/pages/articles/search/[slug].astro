@@ -15,6 +15,10 @@ if (!searchTerm.trim()) {
   return Astro.redirect("/404");
 }
 
+if (searchTerm === "starred") {
+  return Astro.redirect("/articles/starred");
+}
+
 const articles = await getSanityArticlesBySearch(searchTerm);
 
 // const filteredArticles = articles.filter((article) => {

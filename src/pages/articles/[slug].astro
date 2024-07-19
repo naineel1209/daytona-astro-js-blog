@@ -9,6 +9,8 @@ import StarredArticles from "../../components/subcomponents/articlesbox/StarredA
 import { Markdown } from "astro-remote";
 import type { TArticle } from "../../types/types";
 import Heading from "../../components/markdown/Heading.astro";
+import CodeBlock from "../../components/markdown/CodeBlock.astro";
+import CodeSpan from "../../components/markdown/CodeSpan.astro";
 
 let article: TArticle | null = null;
 
@@ -23,8 +25,6 @@ if (!article) {
 
 const { title, description, date, author, image, tags, starred, content } =
   article;
-
-console.log(content);
 
 //TODO - add a links maker in an article
 ---
@@ -66,9 +66,11 @@ console.log(content);
       <div class="markdown-body mt-2">
         <Markdown
           content={content}
-          sanitize={{ allowComponents: true }}
+          sanitize={{ allowComponents: true, allowCustomElements: true }}
           components={{
             Heading,
+            CodeBlock,
+            CodeSpan,
           }}
         />
       </div>
@@ -78,7 +80,6 @@ console.log(content);
     </div>
   </div>
 
-  <!-- // @ts-nocheck -->
   <script is:inline>
     document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll("pre").forEach((pre) => {
@@ -185,23 +186,17 @@ console.log(content);
     }
 
     /* Lists */
-    .markdown-body ul,
-    .markdown-body ol {
-      padding-left: 2rem;
+    .markdown-body ul {
       margin-bottom: 1rem;
     }
 
-    .markdown-body ul li,
-    .markdown-body ol li {
+    .markdown-body ul li {
       margin-bottom: 0.5rem;
+      padding-left: 1rem;
     }
 
-    .markdown-body ol {
-      list-style-type: none; /* Remove default numbering */
-    }
-
-    .markdown-body ol li {
-      counter-increment: li; /* Increment the counter */
+    .markdown-body ul {
+      list-style-type: "\235f";
     }
 
     /* Links */

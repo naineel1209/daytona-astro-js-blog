@@ -13,6 +13,8 @@ const { prefillVal } = Astro.props;
 
     if (searchQuery) {
       window.location.href = `/articles/search/${searchQuery}`;
+    } else {
+      window.location.href = `/articles`;
     }
   });
 </script>

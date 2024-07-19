@@ -1,0 +1,16 @@
+---
+const { code } = Astro.props;
+---
+
+<span>
+  <code data-code set:text={code} />
+</span>
+
+<style>
+  span {
+    font-weight: bold;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    background-color: #f3f3f3;
+  }
+</style>

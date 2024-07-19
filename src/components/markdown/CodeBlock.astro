@@ -1,0 +1,24 @@
+---
+import Prism from "prismjs";
+import "prismjs/themes/prism-okaidia.css";
+import loadLanguages from "prismjs/components/index";
+
+const { lang, code, ...props } = Astro.props;
+loadLanguages([lang]);
+
+const highlighted = Prism.highlight(code, Prism.languages[lang], lang);
+---
+
+<pre>
+    <code class={`language-${lang}`} set:html={highlighted} />
+</pre>
+
+<style>
+  code {
+    font-size: 1rem;
+  }
+
+  pre {
+    background-color: #000;
+  }
+</style>

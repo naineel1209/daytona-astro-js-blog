@@ -32,10 +32,15 @@ export const getStarredArticleQuery = (limit: number) => (`
     *[_type == "article" && starred == true && draft == false] | order(date desc){
         _id,
         title,
+        description,
+        author,
+        date,
+        image,
+        tags,
         slug,
         starred,
         draft
-    }
+    }[0...${limit}]
 `)
 
 export const getArticleBySlugQuery = (slug: string) => (`

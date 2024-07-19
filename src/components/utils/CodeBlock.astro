@@ -1,8 +1,0 @@
----
-const { lang, code, ...props } = Astro.props;
-// const highlighted = await highlighted(code, { lang });
----
-
-<pre class={`language-${lang}`}>
-  <code set:html="" {...props} />
-</pre>

@@ -2,7 +2,8 @@
 
 ## TODOs
 
-- make custom components for solo article page
+- [DONE] make custom components for solo article page
+- [High Priority] make every query paginated and limited
 - make author schema
 - make like and comment schema
 - make shareable button
