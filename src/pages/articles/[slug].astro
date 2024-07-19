@@ -8,6 +8,7 @@ import Tags from "../../components/utils/Tags.astro";
 import StarredArticles from "../../components/subcomponents/articlesbox/StarredArticles.astro";
 import { Markdown } from "astro-remote";
 import type { TArticle } from "../../types/types";
+import Heading from "../../components/markdown/Heading.astro";
 
 let article: TArticle | null = null;
 
@@ -22,7 +23,10 @@ if (!article) {
 
 const { title, description, date, author, image, tags, starred, content } =
   article;
-// const { Content } = await article.render();
+
+console.log(content);
+
+//TODO - add a links maker in an article
 ---
 
 <MainLayout title={title} margin_small={true}>
@@ -60,7 +64,13 @@ const { title, description, date, author, image, tags, starred, content } =
       </div>
       <!-- TODO - add a links maker in an article -->
       <div class="markdown-body mt-2">
-        <Markdown content={content} />
+        <Markdown
+          content={content}
+          sanitize={{ allowComponents: true }}
+          components={{
+            Heading,
+          }}
+        />
       </div>
     </div>
     <div class="w-[30%] h-full mt-[3.5rem]">
