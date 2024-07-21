@@ -29,25 +29,33 @@ export const getSanityArticles = async (limit?: number, page?: number): Promise<
   return sanityArticles;
 };
 
-export const getSanityStarredArticles = async (): Promise<TArticles[]> => {
+export const getSanityStarredArticles = async (page?: number): Promise<TArticles[]> => {
   const limit = STARRED_ARTICLE_LIMIT;
 
-  const sanityArticles: TArticles[] = await sanityClient.fetch(getStarredArticleQuery(limit));
+  if (!page || page < 1) {
+    page = 1;
+  }
+
+  const sanityArticles: TArticles[] = await sanityClient.fetch(getStarredArticleQuery(limit, page));
 
   return sanityArticles;
 
 }
 
-export const getLatestSanityArticles = async (): Promise<TArticles[]> => {
+export const getSanityLatestArticles = async (page?: number): Promise<TArticles[]> => {
   const limit = LATEST_ARTICLE_LIMIT;
 
-  const sanityArticles: TArticles[] = await sanityClient.fetch(getLatestArticlesQuery(limit));
+  if (!page || page < 1) {
+    page = 1;
+  }
+
+  const sanityArticles: TArticles[] = await sanityClient.fetch(getLatestArticlesQuery(limit, page));
 
   return sanityArticles;
 }
 
 export const getSanityArticleBySlug = async (slug: string): Promise<TArticle> => {
-  return await sanityClient.fetch(getArticleBySlugQuery(slug));
+  return sanityClient.fetch(getArticleBySlugQuery(slug));
 }
 
 export const getSanityArticlesBySearch = async (search: string, limit?: number, page?: number): Promise<TArticles[]> => {
