@@ -1,9 +1,25 @@
 ---
+import AuthorBanner from "../../components/subcomponents/author-utils/AuthorBanner.astro";
+import HighlightedHeading from "../../components/utils/HighlightedHeading.astro";
+import { getSanityAuthors } from "../../data/authors";
 import MainLayout from "../../layouts/MainLayout.astro";
+
+const authors = await getSanityAuthors();
 ---
 
-<!-- !You have to manually update the output of the astro project by setting output to server or static or hybrid depending on the requirements --><!-- TODO - add a search bar to sarch the article -->
-<MainLayout title="Articles">
-  <h1>Authors</h1>
-  <p>Coming soon...</p>
+<MainLayout title="Authors">
+  <div
+    class="border-t-2 border-r-2 rounded-tr-[1rem] border-blue-300 p-[3rem] pt-[1rem]"
+  >
+    <div class="flex items-center justify-between pb-[2rem]">
+      <HighlightedHeading title="Authors" />
+    </div>
+    <div class="grid grid-flow-col-dense gap-[1rem] place-items-center">
+      {
+        authors.map((author) => {
+          return <AuthorBanner author={author} />;
+        })
+      }
+    </div>
+  </div>
 </MainLayout>

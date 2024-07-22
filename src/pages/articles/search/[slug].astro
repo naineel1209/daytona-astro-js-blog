@@ -22,7 +22,7 @@ if (searchTerm === "starred") {
 const articles = await getSanityArticlesBySearch(searchTerm);
 ---
 
-<MainLayout title="Articles">
+<MainLayout title="Searched Articles">
   <div class="my-[2rem] w-[100%]">
     <Search prefillVal={searchTerm} />
   </div>

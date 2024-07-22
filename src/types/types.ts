@@ -3,12 +3,14 @@ type TSlug = {
     _type: 'slug',
 }
 
-type TArticleAuthor = {
+export type TArticleAuthor = {
     _id: string,
     name: string,
+    shortBio: string,
     bio: string,
     image: string,
     slug: TSlug,
+
 }
 
 export type TArticles = {

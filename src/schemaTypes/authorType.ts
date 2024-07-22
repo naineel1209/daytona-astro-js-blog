@@ -12,6 +12,12 @@ export const authorType = defineType({
             validation: (Rule) => Rule.required(),
         }),
         defineField({
+            name: 'shortBio',
+            title: 'Short Bio',
+            type: 'text',
+            validation: (Rule) => Rule.required().min(5).max(50),
+        }),
+        defineField({
             name: 'bio',
             title: 'Bio',
             type: 'text',
@@ -29,6 +35,11 @@ export const authorType = defineType({
             type: 'slug',
             options: {
                 source: 'name',
+                slugify: (input) => {
+                    const str = input.toLowerCase().replace(/\s+/g, '-')
+                    const digits = new Date().getTime().toString().slice(-5)
+                    return `${str}-${digits}`;
+                }
             },
             validation: (Rule) => Rule.required(),
         }),

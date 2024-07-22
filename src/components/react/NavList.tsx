@@ -11,7 +11,13 @@ export default () => {
     id: 2,
     name: 'Articles',
     url: '/articles'
-  }]
+  },
+  {
+    id: 3,
+    name: 'Authors',
+    url: '/authors'
+  }
+  ]
 
   return (
     <>

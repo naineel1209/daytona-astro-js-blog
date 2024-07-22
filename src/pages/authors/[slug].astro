@@ -1,0 +1,38 @@
+---
+import HighlightedHeading from "../../components/utils/HighlightedHeading.astro";
+import { getSanityAuthorBySlug } from "../../data/authors";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const { slug } = Astro.params;
+
+if (!slug) {
+  return Astro.redirect("/404");
+}
+
+const author = await getSanityAuthorBySlug(slug);
+---
+
+<MainLayout title={`Authors - ${author.name}`}>
+  <div
+    class="border-t-2 border-r-2 rounded-tr-[1rem] border-blue-300 p-[3rem] pt-[1rem]"
+  >
+    <div class="grid grid-flow-col-dense gap-[1rem] place-items-center">
+      <div class="flex flex-col items-center justify-center">
+        <img
+          src={author.image}
+          alt={author.name}
+          class="w-[10rem] h-[10rem] rounded-full"
+        />
+        <HighlightedHeading title={author.name} />
+        <div
+          class="flex flex-col items-center justify-center p-5 border-2 shadow-2xl rounded-[1rem] border-blue-300"
+        >
+          <p class="font-semibold text-slate-900 text-2xl">
+            {author.shortBio}
+          </p>
+          <p class="text-slate-700 text-lg">{author.bio}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>

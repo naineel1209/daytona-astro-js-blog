@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+import type { TArticleAuthor } from "../../../types/types";
+
+const author: TArticleAuthor = Astro.props.author;
+console.log(author);
+---
+
+<div
+  class="mb-[2rem] w-[70%] border-2 transition-all hover:scale-110 duration-300"
+>
+  <div class="p-5">
+    <Image
+      src={author.image as string}
+      alt={author.name}
+      class="w-[100%] object-cover"
+      inferSize={true}
+    />
+  </div>
+  <div class="p-5">
+    <a
+      class="text-2xl font-semibold text-blue-500"
+      href={`/authors/${author.slug.current}`}>{author.name}</a
+    >
+    <p class="text-lg font-medium text-gray-500">{author.shortBio}</p>
+  </div>
+</div>
