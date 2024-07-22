@@ -3,10 +3,11 @@
 ## TODOs
 
 - [DONE] make custom components for solo article page
-- [High Priority] make every query paginated and limited
+- [DONE] make every query paginated and limited (LEFT WORK - frontend integration)
 - make author schema
 - make like and comment schema
 - make shareable button
+- change the theme to strictly dark mode
 
 ```sh
 npm create astro@latest -- --template minimal

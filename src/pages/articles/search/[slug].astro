@@ -20,19 +20,6 @@ if (searchTerm === "starred") {
 }
 
 const articles = await getSanityArticlesBySearch(searchTerm);
-
-// const filteredArticles = articles.filter((article) => {
-//   const lowercasedSearchTerm = searchTerm.toLowerCase();
-
-//   return (
-//     article.data.title.toLowerCase().includes(lowercasedSearchTerm) ||
-//     article.data.description.toLowerCase().includes(lowercasedSearchTerm) ||
-//     article.data.author.toLowerCase().includes(lowercasedSearchTerm) ||
-//     article.data.tags.some((tag) =>
-//       tag.toLowerCase().includes(lowercasedSearchTerm)
-//     )
-//   );
-// });
 ---
 
 <MainLayout title="Articles">

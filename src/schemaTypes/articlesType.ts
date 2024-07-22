@@ -1,4 +1,4 @@
-import {defineType, defineField, type DateRule} from 'sanity'
+import { defineType, defineField, type DateRule } from 'sanity'
 
 
 export const articlesType = defineType({
@@ -20,16 +20,17 @@ export const articlesType = defineType({
         defineField({
             name: 'author',
             title: 'Author',
-            type: 'string',
+            type: 'reference',
+            to: [{ type: 'author' }],
             validation: (Rule) => Rule.required(),
         }),
         defineField({
             name: 'date',
             title: 'Date',
             type: 'date',
-            validation: (Rule:DateRule) => {
+            validation: (Rule: DateRule) => {
                 return Rule.required().custom((date) => {
-                    if (!date || new Date(date).toString() === 'Invalid Date'){
+                    if (!date || new Date(date).toString() === 'Invalid Date') {
                         return 'Required';
                     }
                     return true;
@@ -46,7 +47,7 @@ export const articlesType = defineType({
             name: 'tags',
             title: 'Tags',
             type: 'array',
-            of: [{type: 'string'}],
+            of: [{ type: 'string' }],
             validation: (Rule) => {
                 return Rule.required().min(1).max(4);
             },

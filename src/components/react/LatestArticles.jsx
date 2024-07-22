@@ -10,7 +10,6 @@ const LatestArticles = (props) => {
 
     const fetchArticles = async () => {
         const data = await getSanityLatestArticles(page);
-        console.log(data);
         setArticles(data);
     };
 

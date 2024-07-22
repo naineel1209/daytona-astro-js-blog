@@ -3,7 +3,13 @@ export const getArticlesQuery = (limit: number, page: number) => (`
         _id,
         title,
         description,
-        author,
+        author -> {
+            _id,
+            name,
+            bio,
+            image,
+            slug
+        },
         date,
         image,
         tags,
@@ -18,7 +24,13 @@ export const getLatestArticlesQuery = (limit: number, page: number) => (`
         _id,
         title,
         description,
-        author,
+        author -> {
+            _id,
+            name,
+            bio,
+            image,
+            slug
+        },
         date,
         image,
         tags,
@@ -33,7 +45,13 @@ export const getStarredArticleQuery = (limit: number, page: number) => (`
         _id,
         title,
         description,
-        author,
+        author -> {
+            _id,
+            name,
+            bio,
+            image,
+            slug
+        },
         date,
         image,
         tags,
@@ -48,7 +66,13 @@ export const getArticleBySlugQuery = (slug: string) => (`
         _id,
         title,
         description,
-        author,
+        author -> {
+            _id,
+            name,
+            bio,
+            image,
+            slug
+        },
         date,
         image,
         tags,
@@ -64,7 +88,13 @@ export const getArticlesBySearchQuery = (search: string, limit: number, page: nu
         _id,
         title,
         description,
-        author,
+        author -> {
+            _id,
+            name,
+            bio,
+            image,
+            slug
+        },
         date,
         image,
         tags,

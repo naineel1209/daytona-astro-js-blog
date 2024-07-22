@@ -53,7 +53,9 @@ const { title, description, date, author, image, tags, starred, content } =
             <p class="text-lg font-semibold">{description}</p>
           </div>
           <p class="text-gray-500 text-md font-medium my-[.5rem]">
-            {formatDate(date)} - <a href={`/authors/${author}`}>{author}</a>
+            {formatDate(date)} - <a href={`/authors/${author._id}`}
+              >{author.name}</a
+            >
           </p>
           <Tags
             tags={tags}

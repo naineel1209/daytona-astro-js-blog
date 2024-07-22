@@ -3,11 +3,19 @@ type TSlug = {
     _type: 'slug',
 }
 
+type TArticleAuthor = {
+    _id: string,
+    name: string,
+    bio: string,
+    image: string,
+    slug: TSlug,
+}
+
 export type TArticles = {
     _id: string,
     title: string,
     description: string,
-    author: string,
+    author: TArticleAuthor,
     date: string,
     starred: boolean,
     draft: boolean,
