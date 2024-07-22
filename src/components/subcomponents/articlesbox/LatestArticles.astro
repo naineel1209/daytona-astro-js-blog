@@ -1,10 +1,12 @@
 ---
-import { getLatestSanityArticles } from "../../../data/articles.ts";
+import { getSanityLatestArticles } from "../../../data/articles.ts";
 import HighlightedHeading from "../../utils/HighlightedHeading.astro";
 import ArticleBanner from "../article-utils//ArticleBanner.astro";
 
-let articles = await getLatestSanityArticles();
+let articles = await getSanityLatestArticles();
 ---
+
+<script></script>
 
 <div class="w-[80%] border-t-2 border-r-2 border-blue-300 p-[3rem] pt-[1rem]">
   <div class="flex items-center justify-between pb-[2rem]">
