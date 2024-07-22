@@ -73,3 +73,5 @@ export const getArticlesBySearchQuery = (search: string, limit: number, page: nu
         draft
     }[${(page - 1) * limit}...${page * limit}]
 `);
+
+export const getTotalArticlesQuery = `count(*[_type == "article" && draft == false])`;

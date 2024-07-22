@@ -3,7 +3,7 @@ import { getCollection, getEntryBySlug } from "astro:content";
 import { sanityClient } from 'sanity:client';
 import { ARTICLES_PER_PAGE, LATEST_ARTICLE_LIMIT, STARRED_ARTICLE_LIMIT } from "../constants";
 import type { TArticle, TArticles } from "../types/types";
-import { getArticleBySlugQuery, getArticlesBySearchQuery, getArticlesQuery, getLatestArticlesQuery, getStarredArticleQuery } from "./query/articles.query";
+import { getArticleBySlugQuery, getArticlesBySearchQuery, getArticlesQuery, getLatestArticlesQuery, getStarredArticleQuery, getTotalArticlesQuery } from "./query/articles.query";
 
 export const getArticles = async (limit?: number) => {
   let articles = await getCollection("blogs");
@@ -78,3 +78,8 @@ export const getArticle = async (slug: string) => {
 
   return articles;
 };
+
+export const getSanityTotalArticles = async (): Promise<number> => {
+  const totalArticles = await sanityClient.fetch(getTotalArticlesQuery);
+  return totalArticles;
+}
