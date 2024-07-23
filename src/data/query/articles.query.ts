@@ -15,7 +15,8 @@ export const getArticlesQuery = (limit: number, page: number) => (`
         tags,
         slug,
         starred,
-        draft
+        draft,
+        views
     }[${(page - 1) * limit}...${page * limit}]
 `);
 
@@ -36,7 +37,8 @@ export const getLatestArticlesQuery = (limit: number, page: number) => (`
         tags,
         slug,
         starred,
-        draft
+        draft,
+        views
     }[${(page - 1) * limit}...${page * limit}]
 `);
 
@@ -57,7 +59,8 @@ export const getStarredArticleQuery = (limit: number, page: number) => (`
         tags,
         slug,
         starred,
-        draft
+        draft,
+        views
     }[${(page - 1) * limit}...${page * limit}]
 `)
 
@@ -79,7 +82,8 @@ export const getArticleBySlugQuery = (slug: string) => (`
         slug,
         starred,
         draft,
-        content
+        content,
+        views
     }[0]
 `)
 
@@ -100,7 +104,8 @@ export const getArticlesBySearchQuery = (search: string, limit: number, page: nu
         tags,
         slug,
         starred,
-        draft
+        draft,
+        views
     }[${(page - 1) * limit}...${page * limit}]
 `);
 

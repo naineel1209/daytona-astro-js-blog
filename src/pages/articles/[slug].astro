@@ -1,7 +1,11 @@
 ---
 import { Image } from "astro:assets";
 import HighlightedHeading from "../../components/utils/HighlightedHeading.astro";
-import { getArticle, getSanityArticleBySlug } from "../../data/articles.js";
+import {
+  getArticle,
+  getSanityArticleBySlug,
+  incrementArticleViews,
+} from "../../data/articles.js";
 import { formatDate } from "../../utils.ts";
 import MainLayout from "../../layouts/MainLayout.astro";
 import Tags from "../../components/utils/Tags.astro";
@@ -23,8 +27,18 @@ if (!article) {
   return Astro.redirect("/404");
 }
 
-const { title, description, date, author, image, tags, starred, content } =
-  article;
+const {
+  title,
+  description,
+  date,
+  author,
+  image,
+  tags,
+  starred,
+  content,
+  _id,
+  views,
+} = article;
 
 //TODO - add a links maker in an article
 ---
@@ -53,10 +67,14 @@ const { title, description, date, author, image, tags, starred, content } =
             <p class="text-lg font-semibold">{description}</p>
           </div>
           <p class="text-gray-500 text-md font-medium my-[.5rem]">
-            {formatDate(date)} - <a href={`/authors/${author._id}`}
+            {formatDate(date)} - <a href={`/authors/${author.slug.current}`}
               >{author.name}</a
             >
           </p>
+          <div class="flex items-center justify-center gap-[.5rem]">
+            <i class="bx bx-show"></i>
+            <p>{views || 0} views</p>
+          </div>
           <Tags
             tags={tags}
             class:list={["mt-[.5rem] mb-[2rem]"]}
@@ -82,8 +100,12 @@ const { title, description, date, author, image, tags, starred, content } =
     </div>
   </div>
 
-  <script is:inline>
-    document.addEventListener("DOMContentLoaded", () => {
+  <script is:inline define:vars={{ _id }}>
+    document.addEventListener("DOMContentLoaded", async () => {
+      await fetch(`/api/increment-view.json?articleId=${_id}`, {
+        method: "PATCH",
+      });
+
       document.querySelectorAll("pre").forEach((pre) => {
         const button = document.createElement("button");
         button.innerText = "Copy";

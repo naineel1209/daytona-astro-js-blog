@@ -41,9 +41,13 @@ const {
     href={`/articles/${articleSlug}`}
     class="p-3 border-t-2 flex flex-row items-center justify-start gap-[1rem] cursor-pointer"
   >
-    <div class="w-[80%] border-r-2">
+    <div class="w-[80%] border-r-2 pr-3">
       <h2 class="text-[1.5rem] font-bold">{article.title}</h2>
       <p class="text-[1rem]">{article.description}</p>
+      <div class="flex items-center justify-center gap-[.5rem]">
+        <i class="bx bx-show"></i>
+        <p>{article.views} views</p>
+      </div>
     </div>
     <div class="w-[20%] flex items-center justify-center">
       <h3 class="text-[1rem] text-slate-500 font-bold">
