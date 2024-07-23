@@ -38,12 +38,6 @@ export const articlesType = defineType({
             }
         }),
         defineField({
-            name: 'image',
-            title: 'Image',
-            type: 'url',
-            validation: (Rule) => Rule.required(),
-        }),
-        defineField({
             name: 'tags',
             title: 'Tags',
             type: 'array',
@@ -82,6 +76,25 @@ export const articlesType = defineType({
             type: 'number',
             validation: (Rule) => Rule.required(),
             initialValue: 0,
+        }),
+        defineField({
+            name: 'imageUrl',
+            title: 'ImageURL',
+            type: 'image',
+            options: {
+                hotspot: true
+            },
+            validation: (Rule) => Rule.required(),
+            fields: [
+                {
+                    name: 'alt',
+                    type: 'string',
+                    title: 'Alt text',
+                    options: {
+                        isHighlighted: true,
+                    }
+                }
+            ]
         })
     ],
     initialValue: {

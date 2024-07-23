@@ -16,7 +16,8 @@ export const getArticlesQuery = (limit: number, page: number) => (`
         slug,
         starred,
         draft,
-        views
+        views,
+        "imageUrl": imageUrl.asset -> url
     }[${(page - 1) * limit}...${page * limit}]
 `);
 
@@ -38,7 +39,8 @@ export const getLatestArticlesQuery = (limit: number, page: number) => (`
         slug,
         starred,
         draft,
-        views
+        views,
+        "imageUrl": imageUrl.asset -> url
     }[${(page - 1) * limit}...${page * limit}]
 `);
 
@@ -60,7 +62,8 @@ export const getStarredArticleQuery = (limit: number, page: number) => (`
         slug,
         starred,
         draft,
-        views
+        views,
+        "imageUrl": imageUrl.asset -> url
     }[${(page - 1) * limit}...${page * limit}]
 `)
 
@@ -83,7 +86,8 @@ export const getArticleBySlugQuery = (slug: string) => (`
         starred,
         draft,
         content,
-        views
+        views,
+        "imageUrl": imageUrl.asset -> url
     }[0]
 `)
 
@@ -105,7 +109,8 @@ export const getArticlesBySearchQuery = (search: string, limit: number, page: nu
         slug,
         starred,
         draft,
-        views
+        views,
+        "imageUrl": imageUrl.asset -> url
     }[${(page - 1) * limit}...${page * limit}]
 `);
 

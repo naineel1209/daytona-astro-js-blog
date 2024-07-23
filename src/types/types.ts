@@ -11,6 +11,7 @@ export type TArticleAuthor = {
     image: string,
     slug: TSlug,
     articles?: TArticles[],
+    imageUrl: string
 }
 
 export type TArticles = {
@@ -25,6 +26,7 @@ export type TArticles = {
     tags: string[],
     slug: TSlug,
     views: number,
+    imageUrl: string,
 }
 
 export type TArticle = TArticles & {

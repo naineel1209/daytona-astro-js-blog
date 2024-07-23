@@ -25,12 +25,6 @@ export const authorType = defineType({
             validation: (Rule) => Rule.required(),
         }),
         defineField({
-            name: 'image',
-            title: 'Image',
-            type: 'url',
-            validation: (Rule) => Rule.required(),
-        }),
-        defineField({
             name: 'slug',
             title: 'Slug',
             type: 'slug',
@@ -46,5 +40,24 @@ export const authorType = defineType({
             },
             validation: (Rule) => Rule.required(),
         }),
+        defineField({
+            name: 'imageUrl',
+            title: 'ImageURL',
+            type: 'image',
+            options: {
+                hotspot: true
+            },
+            validation: (Rule) => Rule.required(),
+            fields: [
+                {
+                    name: 'alt',
+                    type: 'string',
+                    title: 'Alt text',
+                    options: {
+                        isHighlighted: true,
+                    }
+                }
+            ]
+        })
     ],
 })

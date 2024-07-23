@@ -39,6 +39,7 @@ const {
   content,
   _id,
   views,
+  imageUrl,
 } = article;
 
 //TODO - add a links maker in an article
@@ -57,7 +58,7 @@ const {
         </a>
 
         <Image
-          src={image as string}
+          src={imageUrl as string}
           alt={title + " cover"}
           class="w-full h-80 mx-auto mt-[2rem] mb-[1rem] rounded-tl-lg rounded-tr-lg object-cover"
           inferSize={true}

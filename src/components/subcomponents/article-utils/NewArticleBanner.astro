@@ -3,13 +3,15 @@ import type { TArticles } from "../../../types/types";
 
 const article: TArticles = Astro.props.article;
 
+console.log(article);
+
 if (!article) {
   return null;
 }
 ---
 
 <div class="article-card">
-  <img src={article.image} alt={article.title} class="article-image" />
+  <img src={article.imageUrl} alt={article.title} class="article-image" />
   <div class="article-content">
     <a class="article-title" href={`/articles/${article.slug.current}`}
       >{article.title}</a

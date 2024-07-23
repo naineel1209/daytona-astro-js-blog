@@ -21,14 +21,14 @@ if (!author) {
   <div class="author-profile rounded-lg">
     <div class="author-card">
       <div class="author-image-container">
-        <img src={author.image} alt={author.name} class="author-image" />
+        <img src={author.imageUrl} alt={author.name} class="author-image" />
       </div>
       <div class="author-heading">
         <HighlightedHeading title={author.name} />
       </div>
       <div class="author-bio">
         <p class="short-bio">{author.shortBio}</p>
-        <p class="full-bio">{author.bio}</p>
+        <p class="full-bio text-justify">{author.bio}</p>
       </div>
       <div class="author-articles">
         <h2 class="articles-heading">

@@ -5,6 +5,7 @@ export const getAuthorsQuery = () => (`*[_type == "author"] {
     shortBio,
     bio,
     image,
+    "imageUrl": imageUrl.asset -> url,
     slug,
 }`);
 
@@ -14,17 +15,19 @@ export const getAuthorBySlugQuery = (slug: string) => (`*[_type == "author" && s
     shortBio,
     bio,
     image,
+    "imageUrl": imageUrl.asset -> url,
     slug,
     'articles': *[_type == "article" && references(^._id)] {
         _id,
         title,
         description,
         date,
-        image,
         tags,
         slug,
         starred,
         draft,
-        views
+        views,
+        "imageUrl": imageUrl.asset -> url
+
     }
 }`);
