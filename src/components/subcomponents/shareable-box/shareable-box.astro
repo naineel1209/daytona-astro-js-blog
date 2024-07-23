@@ -1,0 +1,18 @@
+---
+import HighlightedHeading from "../../utils/HighlightedHeading.astro";
+import Mailto from "./mailto.astro";
+import ShareableUtil from "./shareable-util.astro";
+
+const link: string = Astro.props.link;
+---
+
+<div class="p-4 flex flex-col gap-4 border-l-2 border-blue-300 pt-[2rem]">
+  <div>
+    <HighlightedHeading title="Share this article" />
+  </div>
+  <ShareableUtil link={link} type="email" />
+  <ShareableUtil link={link} type="facebook" />
+  <ShareableUtil link={link} type="twitter" />
+  <ShareableUtil link={link} type="linkedin" />
+  <ShareableUtil link={link} type="whatsapp" />
+</div>

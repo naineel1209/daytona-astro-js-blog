@@ -7,7 +7,9 @@
 - [DONE] make author schema
 - [DONE] redesign author page completed
 - [DONE] add a view counter to articles
-- make shareable button
+- [DONE] make a shareable button
+- add all the published articles on the blog
+- solve the issue of deployment failing
 - change the theme to strictly dark mode
 
 ```sh

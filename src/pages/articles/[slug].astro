@@ -15,6 +15,7 @@ import type { TArticle } from "../../types/types";
 import Heading from "../../components/markdown/Heading.astro";
 import CodeBlock from "../../components/markdown/CodeBlock.astro";
 import CodeSpan from "../../components/markdown/CodeSpan.astro";
+import ShareableBox from "../../components/subcomponents/shareable-box/shareable-box.astro";
 
 let article: TArticle | null = null;
 
@@ -97,6 +98,7 @@ const {
     </div>
     <div class="w-[30%] h-full mt-[3.5rem]">
       <StarredArticles class:list={["border-t-2 border-l-2 border-blue-300"]} />
+      <ShareableBox link={Astro.url.href} />
     </div>
   </div>
 
