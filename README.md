@@ -6,7 +6,7 @@
 - [DONE] make every query paginated and limited (LEFT WORK - frontend integration)
 - [DONE] make author schema
 - [DONE] redesign author page completed
-- add a view counter to articles
+- [DONE] add a view counter to articles
 - make shareable button
 - change the theme to strictly dark mode
 
