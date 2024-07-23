@@ -15,4 +15,15 @@ export const getAuthorBySlugQuery = (slug: string) => (`*[_type == "author" && s
     bio,
     image,
     slug,
+    'articles': *[_type == "article" && references(^._id)] {
+        _id,
+        title,
+        description,
+        date,
+        image,
+        tags,
+        slug,
+        starred,
+        draft
+    }
 }`);

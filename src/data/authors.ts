@@ -9,5 +9,6 @@ export const getSanityAuthors = async (): Promise<TArticleAuthor[]> => {
 };
 
 export const getSanityAuthorBySlug = async (slug: string): Promise<TArticleAuthor> => {
-    return sanityClient.fetch(getAuthorBySlugQuery(slug));
+    const author = await sanityClient.fetch(getAuthorBySlugQuery(slug));
+    return author;
 }

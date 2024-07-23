@@ -1,4 +1,5 @@
 ---
+import NewArticleBanner from "../../components/subcomponents/article-utils/NewArticleBanner.astro";
 import HighlightedHeading from "../../components/utils/HighlightedHeading.astro";
 import { getSanityAuthorBySlug } from "../../data/authors";
 import MainLayout from "../../layouts/MainLayout.astro";
@@ -13,26 +14,235 @@ const author = await getSanityAuthorBySlug(slug);
 ---
 
 <MainLayout title={`Authors - ${author.name}`}>
-  <div
-    class="border-t-2 border-r-2 rounded-tr-[1rem] border-blue-300 p-[3rem] pt-[1rem]"
-  >
-    <div class="grid grid-flow-col-dense gap-[1rem] place-items-center">
-      <div class="flex flex-col items-center justify-center">
-        <img
-          src={author.image}
-          alt={author.name}
-          class="w-[10rem] h-[10rem] rounded-full"
-        />
+  <div class="author-profile rounded-lg">
+    <div class="author-card">
+      <div class="author-image-container">
+        <img src={author.image} alt={author.name} class="author-image" />
+      </div>
+      <div class="author-heading">
         <HighlightedHeading title={author.name} />
-        <div
-          class="flex flex-col items-center justify-center p-5 border-2 shadow-2xl rounded-[1rem] border-blue-300"
-        >
-          <p class="font-semibold text-slate-900 text-2xl">
-            {author.shortBio}
-          </p>
-          <p class="text-slate-700 text-lg">{author.bio}</p>
-        </div>
+      </div>
+      <div class="author-bio">
+        <p class="short-bio">{author.shortBio}</p>
+        <p class="full-bio">{author.bio}</p>
+      </div>
+      <div class="author-articles">
+        <h2 class="articles-heading">
+          Latest Articles from <span class="font-bold">{author.name}</span>
+        </h2>
+        {
+          author.articles && author.articles.length > 0 ? (
+            <div class="articles-grid">
+              {author.articles.map((article) => (
+                <NewArticleBanner article={article} />
+              ))}
+            </div>
+          ) : (
+            <p class="no-articles-message">
+              No articles available at the moment.
+            </p>
+          )
+        }
       </div>
     </div>
   </div>
 </MainLayout>
+
+<style>
+  .author-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .author-profile {
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+  }
+
+  .author-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 2rem;
+    padding: 3rem;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    max-width: 1000px;
+    width: 100%;
+    transform: perspective(1000px) rotateX(5deg);
+    transition: transform 0.3s ease;
+  }
+
+  .author-card:hover {
+    transform: perspective(1000px) rotateX(0deg) scale(1.02);
+  }
+
+  .author-image-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: -100px auto 2rem;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .author-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .author-image-container:hover .author-image {
+    transform: scale(1.1);
+  }
+
+  :global(.highlighted-heading) {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow 6s ease-in-out infinite;
+    background-size: 400% 400%;
+  }
+
+  .author-bio {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .short-bio {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+  }
+
+  .full-bio {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #34495e;
+  }
+
+  .articles-heading {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+  }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .no-articles-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #34495e;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 1rem;
+  }
+
+  .article-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .article-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .article-content {
+    padding: 1.5rem;
+  }
+
+  .article-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+  }
+
+  .article-description {
+    font-size: 1rem;
+    color: #34495e;
+    margin-bottom: 1rem;
+  }
+
+  .article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+  }
+
+  .article-star {
+    color: #f1c40f;
+  }
+
+  @keyframes rainbow {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .author-card {
+      padding: 2rem;
+    }
+
+    .author-image-container {
+      width: 150px;
+      height: 150px;
+      margin: -75px auto 1.5rem;
+    }
+
+    :global(.highlighted-heading) {
+      font-size: 2.5rem;
+    }
+
+    .short-bio {
+      font-size: 1.3rem;
+    }
+
+    .full-bio {
+      font-size: 1rem;
+    }
+
+    .articles-heading {
+      font-size: 1.8rem;
+    }
+
+    .articles-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

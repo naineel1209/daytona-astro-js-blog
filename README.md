@@ -4,8 +4,9 @@
 
 - [DONE] make custom components for solo article page
 - [DONE] make every query paginated and limited (LEFT WORK - frontend integration)
-- make author schema
-- make like and comment schema
+- [DONE] make author schema
+- [DONE] redesign author page completed
+- add a view counter to articles
 - make shareable button
 - change the theme to strictly dark mode
 

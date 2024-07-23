@@ -10,7 +10,7 @@ export type TArticleAuthor = {
     bio: string,
     image: string,
     slug: TSlug,
-
+    articles?: TArticles[],
 }
 
 export type TArticles = {
