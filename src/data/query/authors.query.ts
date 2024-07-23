@@ -24,6 +24,7 @@ export const getAuthorBySlugQuery = (slug: string) => (`*[_type == "author" && s
         tags,
         slug,
         starred,
-        draft
+        draft,
+        views
     }
 }`);

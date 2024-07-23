@@ -83,3 +83,18 @@ export const getSanityTotalArticles = async (): Promise<number> => {
   const totalArticles = await sanityClient.fetch(getTotalArticlesQuery);
   return totalArticles;
 }
+
+export const incrementArticleViews = async (_id: string) => {
+  const article = await sanityClient.getDocument(_id);
+
+  if (!article) {
+    throw new Error("Article not found");
+  }
+
+  const views = article.views + 1;
+
+  await sanityClient
+    .patch(_id)
+    .set({ views })
+    .commit();
+}

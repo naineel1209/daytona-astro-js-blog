@@ -75,6 +75,13 @@ export const articlesType = defineType({
             name: 'starred',
             title: 'Starred',
             type: 'boolean',
+        }),
+        defineField({
+            name: 'views',
+            title: 'Views',
+            type: 'number',
+            validation: (Rule) => Rule.required(),
+            initialValue: 0,
         })
     ],
     initialValue: {

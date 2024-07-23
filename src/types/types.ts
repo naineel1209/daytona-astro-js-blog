@@ -24,6 +24,7 @@ export type TArticles = {
     image: string,
     tags: string[],
     slug: TSlug,
+    views: number,
 }
 
 export type TArticle = TArticles & {
