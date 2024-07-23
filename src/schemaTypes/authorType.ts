@@ -1,4 +1,5 @@
 import { defineType, defineField } from "sanity";
+import slugify from "slugify";
 
 export const authorType = defineType({
     name: 'author',
@@ -36,9 +37,11 @@ export const authorType = defineType({
             options: {
                 source: 'name',
                 slugify: (input) => {
-                    const str = input.toLowerCase().replace(/\s+/g, '-')
-                    const digits = new Date().getTime().toString().slice(-5)
-                    return `${str}-${digits}`;
+                    return slugify(input, {
+                        replacement: '-',
+                        strict: true,
+                        lower: true,
+                    })
                 }
             },
             validation: (Rule) => Rule.required(),
