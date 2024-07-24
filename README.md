@@ -10,7 +10,7 @@
 - [DONE] make a shareable button
 - [DONE] make author to about-me
 - make images an cdn
-- add all the published articles on the sanity
+- [DONE] add all the published articles on the sanity
 - solve the issue of deployment failing
 - change the theme to strictly dark mode
 
