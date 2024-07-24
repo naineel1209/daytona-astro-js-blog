@@ -28,3 +28,4 @@ pnpm-debug.log*
 
 *.todo
 sanity.config.ts
+sanity.cli.ts

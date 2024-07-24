@@ -37,6 +37,7 @@
     "typescript": "^5.5.3"
   },
   "devDependencies": {
-    "@types/prismjs": "^1.26.4"
+    "@types/prismjs": "^1.26.4",
+    "vite": "^5.3.4"
   }
 }
