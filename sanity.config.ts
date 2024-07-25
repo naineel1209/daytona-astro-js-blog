@@ -3,7 +3,8 @@ import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './src/schemaTypes'
 import { markdownSchema } from 'sanity-plugin-markdown'
-
+import { config } from 'dotenv';
+config();
 
 console.log(process.env);
 
