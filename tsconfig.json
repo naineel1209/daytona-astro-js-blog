@@ -3,5 +3,16 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "react"
+  },
+  "paths": {
+    "react": [
+      "node_modules/react"
+    ],
+    "react-dom": [
+      "node_modules/react-dom"
+    ],
+    "tslib": [
+      "node_modules/tslib"
+    ]
   }
 }

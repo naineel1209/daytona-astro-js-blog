@@ -28,16 +28,17 @@
     "prismjs": "^1.29.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "rollup": "^4.19.0",
     "sanity": "^3.50.0",
     "sanity-plugin-markdown": "^4.1.2",
     "slugify": "^1.6.6",
     "swiper": "^11.1.5",
     "tailwindcss": "^3.4.5",
-    "tslib": "^2.6.3",
     "typescript": "^5.5.3"
   },
   "devDependencies": {
     "@types/prismjs": "^1.26.4",
+    "tslib": "^2.6.3",
     "vite": "^5.3.4"
   }
 }
