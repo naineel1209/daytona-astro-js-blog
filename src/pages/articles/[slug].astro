@@ -105,11 +105,14 @@ const {
 
   <script is:inline define:vars={{ _id }}>
     document.addEventListener("DOMContentLoaded", async () => {
+      console.log("Incrementing views for article", _id);
       await fetch(`/api/increment-view.json?articleId=${_id}`, {
         method: "PATCH",
       });
 
-      document.querySelectorAll("pre").forEach((pre) => {
+      const pres = document.querySelectorAll("pre");
+
+      pres.forEach((pre) => {
         const button = document.createElement("button");
         button.innerText = "Copy";
         pre.classList.add("relative");

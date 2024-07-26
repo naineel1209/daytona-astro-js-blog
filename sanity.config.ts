@@ -6,7 +6,10 @@ import { markdownSchema } from 'sanity-plugin-markdown'
 import { config } from 'dotenv';
 config();
 
-console.log(process.env);
+// Debugging to check if environment variables are loaded
+console.log('Sanity Project ID:', process.env.SECRET_SANITY_PROJECT_ID);
+console.log('Sanity Dataset:', process.env.SECRET_SANITY_DATASET);
+console.log('Sanity Token:', process.env.SECRET_SANITY_TOKEN);
 
 export default defineConfig({
     name: 'default',

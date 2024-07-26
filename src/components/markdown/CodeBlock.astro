@@ -13,6 +13,14 @@ const highlighted = Prism.highlight(code, Prism.languages[lang], lang);
     <code class={`language-${lang}`} set:html={highlighted} />
 </pre>
 
+<script>
+  import Prism from "prismjs";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    Prism.highlightAll();
+  });
+</script>
+
 <style>
   code {
     font-size: 1rem;

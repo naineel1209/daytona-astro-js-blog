@@ -28,6 +28,5 @@ export const getAuthorBySlugQuery = (slug: string) => (`*[_type == "author" && s
         draft,
         views,
         "imageUrl": imageUrl.asset -> url
-
     }
 }`);

@@ -10,12 +10,12 @@ const { SECRET_SANITY_TOKEN, SECRET_SANITY_PROJECT_ID, SECRET_SANITY_DATASET } =
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), react(), sanity({
-    projectId: SECRET_SANITY_PROJECT_ID,
-    dataset: SECRET_SANITY_DATASET,
+    projectId: process.env.SECRET_SANITY_PROJECT_ID || SECRET_SANITY_PROJECT_ID,
+    dataset: process.env.SECRET_SANITY_DATASET || SECRET_SANITY_DATASET,
     apiVersion: '2022-07-03',
     useCdn: true, //for SSR - true
     studioBasePath: '/admin',
-    token: SECRET_SANITY_TOKEN,
+    token: process.env.SECRET_SANITY_DATASET || SECRET_SANITY_TOKEN,
   })],
   output: "server",
   adapter: vercel()
