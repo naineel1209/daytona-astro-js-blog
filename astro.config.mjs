@@ -4,7 +4,8 @@ import react from "@astrojs/react";
 import vercel from "@astrojs/vercel/serverless";
 import { loadEnv } from "vite";
 import sanity from "@sanity/astro";
-const { SECRET_SANITY_TOKEN, SECRET_SANITY_PROJECT_ID, SECRET_SANITY_DATASET } = loadEnv("", process.cwd(), "");
+const { SECRET_SANITY_TOKEN, SECRET_SANITY_PROJECT_ID, SECRET_SANITY_DATASET } = loadEnv(process.env.NODE_ENV
+  , process.cwd(), "");
 
 // https://astro.build/config
 export default defineConfig({
