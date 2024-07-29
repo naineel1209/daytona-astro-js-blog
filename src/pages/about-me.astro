@@ -3,6 +3,7 @@ import NewArticleBanner from "../components/subcomponents/article-utils/NewArtic
 import HighlightedHeading from "../components/utils/HighlightedHeading.astro";
 import { getSanityAuthorBySlug } from "./../data/authors";
 import MainLayout from "../layouts/MainLayout.astro";
+import { Image } from "astro:assets";
 
 const slug = "naineel-soyantar";
 
@@ -21,7 +22,12 @@ if (!author) {
   <div class="author-profile rounded-lg">
     <div class="author-card">
       <div class="author-image-container">
-        <img src={author.imageUrl} alt={author.name} class="author-image" />
+        <Image
+          src={author.imageUrl}
+          alt={author.name}
+          inferSize={true}
+          class="author-image"
+        />
       </div>
       <div class="author-heading">
         <HighlightedHeading title={author.name} />
