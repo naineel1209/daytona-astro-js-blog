@@ -10,9 +10,9 @@ const {
   SECRET_SANITY_DATASET
 } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
-console.log("====================================");
-console.log(SECRET_SANITY_TOKEN, SECRET_SANITY_PROJECT_ID, SECRET_SANITY_DATASET);
-console.log("====================================");
+// console.log("====================================");
+// console.log(SECRET_SANITY_TOKEN, SECRET_SANITY_PROJECT_ID, SECRET_SANITY_DATASET);
+// console.log("====================================");
 
 
 // https://astro.build/config

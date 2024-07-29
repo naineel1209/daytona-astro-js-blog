@@ -15,7 +15,7 @@ export default defineConfig({
     name: 'default',
     title: 'naineel-blog',
 
-    projectId: "",
+    projectId: process.env.SECRET_SANITY_PROJECT_ID as string,
     dataset: process.env.SECRET_SANITY_DATASET as string,
     token: process.env.SECRET_SANITY_TOKEN as string,
 
