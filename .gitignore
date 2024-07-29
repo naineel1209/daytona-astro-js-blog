@@ -30,3 +30,6 @@ pnpm-debug.log*
 sanity.config.ts
 # sanity.cli.ts
 sanity.config.ts
+
+# Local Netlify folder
+.netlify

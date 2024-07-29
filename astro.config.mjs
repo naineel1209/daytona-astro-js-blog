@@ -1,9 +1,9 @@
-import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
-import vercel from "@astrojs/vercel/serverless";
-import { loadEnv } from "vite";
+import tailwind from "@astrojs/tailwind";
 import sanity from "@sanity/astro";
+import { defineConfig } from 'astro/config';
+import { loadEnv } from "vite";
+import netlify from "@astrojs/netlify";
 const { SECRET_SANITY_TOKEN, SECRET_SANITY_PROJECT_ID, SECRET_SANITY_DATASET } = loadEnv(process.env.NODE_ENV
   , process.cwd(), "");
 
@@ -18,5 +18,5 @@ export default defineConfig({
     token: process.env.SECRET_SANITY_DATASET || SECRET_SANITY_TOKEN,
   })],
   output: "server",
-  adapter: vercel()
+  adapter: netlify()
 });
