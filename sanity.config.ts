@@ -15,9 +15,9 @@ export default defineConfig({
     name: 'default',
     title: 'naineel-blog',
 
-    projectId: "yhmzb4iv",
-    dataset: "production",
-    token: "sk1aFnPRfVO8jIz7i1AZ8zmrsjyMg0JJnhpEOBBlOlN5ajIyYVvsKc7KEeJd1nb77lCw5uV5lTlvuiA75JzRkcuqfYpvLZ3fPLjgMVDQjmtfDSD7jBYOY2Lkm3ttFhQFVSaWzWBDSnZyiXPYhn9oH9r24MFbdQxYjKJvMgJ14dRgnTpjRGlS",
+    projectId: "",
+    dataset: process.env.SECRET_SANITY_DATASET as string,
+    token: process.env.SECRET_SANITY_TOKEN as string,
 
     plugins: [structureTool(), visionTool(), markdownSchema()],
 
