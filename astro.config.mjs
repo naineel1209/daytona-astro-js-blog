@@ -10,6 +10,10 @@ const {
   SECRET_SANITY_DATASET
 } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
+console.log("====================================");
+console.log(SECRET_SANITY_TOKEN, SECRET_SANITY_PROJECT_ID, SECRET_SANITY_DATASET);
+console.log("====================================");
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,9 +21,8 @@ export default defineConfig({
     projectId: process.env.SECRET_SANITY_PROJECT_ID || SECRET_SANITY_PROJECT_ID,
     dataset: process.env.SECRET_SANITY_DATASET || SECRET_SANITY_DATASET,
     apiVersion: '2022-07-03',
-    useCdn: true,
     //for SSR - true
-    studioBasePath: '/admin',
+    useCdn: true,
     token: process.env.SECRET_SANITY_DATASET || SECRET_SANITY_TOKEN
   })],
   output: "server",

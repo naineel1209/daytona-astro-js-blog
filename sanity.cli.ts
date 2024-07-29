@@ -5,7 +5,7 @@ const { SECRET_SANITY_PROJECT_ID, SECRET_SANITY_DATASET } = loadEnv("", process.
 
 export default defineCliConfig({
     api: {
-        projectId: SECRET_SANITY_PROJECT_ID,
-        dataset: SECRET_SANITY_DATASET,
+        projectId: "yhmzb4iv",
+        dataset: "production",
     }
 });
