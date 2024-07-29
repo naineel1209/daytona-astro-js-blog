@@ -26,5 +26,7 @@ export default defineConfig({
     token: SECRET_SANITY_TOKEN
   })],
   output: "server",
-  adapter: vercel()
+  adapter: vercel({
+    imageService: true,
+  })
 });
