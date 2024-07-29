@@ -103,13 +103,17 @@ const {
   </div>
 
   <script is:inline define:vars={{ _id }}>
-    document.addEventListener("DOMContentLoaded", async () => {
-      console.log("Incrementing views for article", _id);
-      await fetch(`/api/increment-view.json?articleId=${_id}`, {
-        method: "PATCH",
-      });
+    document.addEventListener("DOMContentLoaded", () => {
+      (async () => {
+        console.log("Incrementing views for article", _id);
+        await fetch(`/api/increment-view.json?articleId=${_id}`, {
+          method: "PATCH",
+        });
+      })();
 
       const pres = document.querySelectorAll("pre");
+
+      console.log(pres);
 
       pres.forEach((pre) => {
         const button = document.createElement("button");

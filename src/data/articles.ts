@@ -49,6 +49,7 @@ export const getSanityLatestArticles = async (page?: number): Promise<TArticles[
     page = 1;
   }
 
+
   const sanityArticles: TArticles[] = await sanityClient.fetch(getLatestArticlesQuery(limit, page));
 
   return sanityArticles;
