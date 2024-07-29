@@ -23,5 +23,5 @@ export default defineConfig({
     token: process.env.SECRET_SANITY_DATASET || SECRET_SANITY_TOKEN
   })],
   output: "server",
-  adapter: vercel({})
+  adapter: vercel()
 });
