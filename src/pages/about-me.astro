@@ -22,12 +22,7 @@ if (!author) {
   <div class="author-profile rounded-lg">
     <div class="author-card">
       <div class="author-image-container">
-        <Image
-          src={author.imageUrl}
-          alt={author.name}
-          inferSize={true}
-          class="author-image"
-        />
+        <img src={author.imageUrl} alt={author.name} class="author-image" />
       </div>
       <div class="author-heading">
         <HighlightedHeading title={author.name} />
