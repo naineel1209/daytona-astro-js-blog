@@ -85,6 +85,7 @@ const {
       </div>
       <!-- TODO - add a links maker in an article -->
       <div class="markdown-body mt-2">
+        <div class="border-b-2" id="toc"></div>
         <Markdown
           content={content}
           sanitize={{ allowComponents: true, allowCustomElements: true }}
@@ -110,6 +111,39 @@ const {
           method: "PATCH",
         });
       })();
+
+      function generateToc() {
+        console.log("Generating TOC");
+        const headings = document.querySelectorAll("h2, h3, h4, h5, h6");
+        const toc = document.createElement("div");
+        toc.classList.add("toc");
+        toc.innerHTML = "<h2>Table of Contents</h2>";
+        const tocList = document.createElement("ul");
+        tocList.style.listStyleType = "none";
+        toc.appendChild(tocList);
+
+        headings.forEach((heading) => {
+          const id = heading.id;
+          const text = heading.innerText;
+          const level = parseInt(heading.tagName[1]);
+          const listItem = document.createElement("li");
+          const link = document.createElement("a");
+          link.href = `#${id}`;
+          link.innerText = text;
+          listItem.appendChild(link);
+          listItem.style.marginLeft = `${(level - 2) * 1}rem`;
+          tocList.appendChild(listItem);
+        });
+
+        // let currLevel = 2; // h2
+        // let currList = tocList;
+
+        // if the currLevel is greater than the heading level, we need the child to the currList of the last item or else we need to create a new list
+
+        document.getElementById("toc").appendChild(toc);
+      }
+
+      generateToc();
 
       const pres = document.querySelectorAll("pre");
 
