@@ -23,7 +23,7 @@ const sanityArticles = await getSanityArticles(Number(limit), Number(page));
     <div class="flex items-center justify-between pb-[2rem]">
       <HighlightedHeading title="Articles" />
     </div>
-    <div class="grid grid-cols-2 gap-[1rem] place-items-center">
+    <div class="grid grid-cols-1 gap-[1rem] place-items-center">
       {
         sanityArticles.map((article: TArticles) => {
           return <ArticleBanner article={article} />;

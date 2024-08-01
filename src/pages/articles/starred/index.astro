@@ -23,7 +23,7 @@ const articles = await getSanityStarredArticles();
         </div>
       )
     }
-    <div class="grid grid-cols-2 gap-[1rem] place-items-center">
+    <div class="grid grid-cols-1 gap-[1rem] place-items-center">
       {
         articles.map((article) => {
           return <ArticleBanner article={article} />;

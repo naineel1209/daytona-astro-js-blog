@@ -10,16 +10,8 @@ const highlighted = Prism.highlight(code, Prism.languages[lang], lang);
 ---
 
 <pre>
-    <code class={`language-${lang}`} set:html={highlighted} />
+    <code class={`language-${lang}`} set:html={highlighted.trim()} />
 </pre>
-
-<script>
-  import Prism from "prismjs";
-
-  document.addEventListener("DOMContentLoaded", () => {
-    Prism.highlightAll();
-  });
-</script>
 
 <style>
   code {

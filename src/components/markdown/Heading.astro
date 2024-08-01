@@ -3,8 +3,6 @@ import slugify from "slugify";
 
 const { as: Component, text } = Astro.props;
 
-console.log(Astro.props);
-
 const slugified = slugify(text, {
   lower: true,
   locale: "en",
