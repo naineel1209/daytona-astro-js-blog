@@ -29,6 +29,17 @@ export type TArticles = {
     imageUrl: string,
 }
 
+export type TRSSArticle = {
+    _id: string,
+    title: string,
+    description: string,
+    date: string,
+    tags: string[],
+    slug: TSlug,
+    starred: boolean,
+    views: number,
+}
+
 export type TArticle = TArticles & {
     content: string,
 }

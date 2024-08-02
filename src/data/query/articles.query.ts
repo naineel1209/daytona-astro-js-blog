@@ -110,3 +110,14 @@ export const getArticlesBySearchQuery = (search: string, limit: number, page: nu
 `);
 
 export const getTotalArticlesQuery = `count(*[_type == "article" && draft == false])`;
+
+export const getRSSArticlesQuery = `*[_type == "article" && draft == false] | order(date desc){
+    _id,
+    title,
+    description,
+    date,
+    tags,
+    slug,
+    starred,
+    views
+}`

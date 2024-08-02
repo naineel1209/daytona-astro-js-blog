@@ -2,8 +2,8 @@ import { getCollection, getEntryBySlug } from "astro:content";
 // @ts-ignore
 import { sanityClient } from 'sanity:client';
 import { ARTICLES_PER_PAGE, LATEST_ARTICLE_LIMIT, STARRED_ARTICLE_LIMIT } from "../constants";
-import type { TArticle, TArticles } from "../types/types";
-import { getArticleBySlugQuery, getArticlesBySearchQuery, getArticlesQuery, getLatestArticlesQuery, getStarredArticleQuery, getTotalArticlesQuery } from "./query/articles.query";
+import type { TArticle, TArticles, TRSSArticle } from "../types/types";
+import { getArticleBySlugQuery, getArticlesBySearchQuery, getArticlesQuery, getLatestArticlesQuery, getRSSArticlesQuery, getStarredArticleQuery, getTotalArticlesQuery } from "./query/articles.query";
 
 export const getArticles = async (limit?: number) => {
   let articles = await getCollection("blogs");
@@ -98,4 +98,10 @@ export const incrementArticleViews = async (_id: string) => {
     .patch(_id)
     .set({ views })
     .commit();
+}
+
+export const getSanityRSSArticles = async (): Promise<TRSSArticle[]> => {
+  const articles = await sanityClient.fetch(getRSSArticlesQuery);
+
+  return articles;
 }

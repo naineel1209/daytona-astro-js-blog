@@ -17,6 +17,7 @@ const {
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://naineel-blog.vercel.app',
   integrations: [tailwind(), react(), sanity({
     projectId: SECRET_SANITY_PROJECT_ID,
     dataset: SECRET_SANITY_DATASET,
