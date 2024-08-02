@@ -1,0 +1,38 @@
+---
+import { getSanityCodeSnippets } from "../../../data/code-snippets";
+import Prism from "prismjs";
+import "prismjs/themes/prism-okaidia.css";
+import loadLanguages from "prismjs/components/index";
+
+const codeSnippets = await getSanityCodeSnippets();
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  {
+    codeSnippets.map((snippet) => {
+      const lang = snippet.code.language;
+      loadLanguages([lang]);
+
+      const highlighted = Prism.highlight(
+        snippet.code.code,
+        Prism.languages[lang],
+        lang
+      );
+      return (
+        <div class="bg-white shadow-md rounded-lg p-4">
+          <div class="p-2">
+            <h2 class="text-xl font-bold">{snippet.title}</h2>
+            <p class="text-gray-600">{snippet.description}</p>
+          </div>
+          <div class="flex items-center justify-between font-bold text-pretty">
+            <span>{snippet.code.language}</span>
+            <span>{snippet.code.filename}</span>
+          </div>
+          <pre class="p-4 rounded-lg mt-4 bg-black h-[500px] overflow-scroll">
+            <code class={`language-${lang}`} set:html={highlighted.trim()} />
+          </pre>
+        </div>
+      );
+    })
+  }
+</div>

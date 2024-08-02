@@ -3,6 +3,7 @@ import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './src/schemaTypes'
 import { markdownSchema } from 'sanity-plugin-markdown'
+import { codeInput } from '@sanity/code-input'
 import { config } from 'dotenv';
 config();
 
@@ -19,7 +20,7 @@ export default defineConfig({
     dataset: process.env.SECRET_SANITY_DATASET as string,
     token: process.env.SECRET_SANITY_TOKEN as string,
 
-    plugins: [structureTool(), visionTool(), markdownSchema()],
+    plugins: [structureTool(), visionTool(), markdownSchema(), codeInput()],
 
     schema: {
         types: schemaTypes,

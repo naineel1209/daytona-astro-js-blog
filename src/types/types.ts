@@ -43,3 +43,14 @@ export type TRSSArticle = {
 export type TArticle = TArticles & {
     content: string,
 }
+
+export type TCodeSnippet = {
+    _id: string,
+    title: string,
+    description: string,
+    code: {
+        code: string,
+        filename: string,
+        language: string,
+    },
+}
