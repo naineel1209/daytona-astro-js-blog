@@ -1,0 +1,17 @@
+{
+    "name": "Astro Starter Kit: Minimal",
+    "image": "mcr.microsoft.com/devcontainers/javascript-node:latest",
+    "forwardPorts": [
+        4321
+    ],
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "astro.enableAutoImport": true,
+                "editor.formatOnSave": true,
+                "typescript.tsdk": "/node_modules/typescript/lib"
+            }
+        }
+    },
+    "postCreateCommand": "npm install"
+}
