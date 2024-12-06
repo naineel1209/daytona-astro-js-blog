@@ -1,24 +1,22 @@
-import { defineConfig } from 'sanity'
-import { structureTool } from 'sanity/structure'
-import { visionTool } from '@sanity/vision'
-import { schemaTypes } from './src/schemaTypes'
-import { markdownSchema } from 'sanity-plugin-markdown'
 import { codeInput } from '@sanity/code-input'
-import { config } from 'dotenv';
-config();
+import { visionTool } from '@sanity/vision'
+import { defineConfig } from 'sanity'
+import { markdownSchema } from 'sanity-plugin-markdown'
+import { structureTool } from 'sanity/structure'
+import { schemaTypes } from './src/schemaTypes'
 
-// Debugging to check if environment variables are loaded
-console.log('Sanity Project ID:', process.env.SECRET_SANITY_PROJECT_ID);
-console.log('Sanity Dataset:', process.env.SECRET_SANITY_DATASET);
-console.log('Sanity Token:', process.env.SECRET_SANITY_TOKEN);
+// @ts-ignore
+const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_DATASET, SANITY_STUDIO_TOKEN } = (import.meta as any).env;
 
+console.log('Sanity Studio Project ID:', SANITY_STUDIO_PROJECT_ID);
+console.log('Sanity Studio Dataset:', SANITY_STUDIO_DATASET);
 export default defineConfig({
     name: 'default',
     title: 'naineel-blog',
 
-    projectId: process.env.SECRET_SANITY_PROJECT_ID as string,
-    dataset: process.env.SECRET_SANITY_DATASET as string,
-    token: process.env.SECRET_SANITY_TOKEN as string,
+    projectId: SANITY_STUDIO_PROJECT_ID as string,
+    dataset: SANITY_STUDIO_DATASET as string,
+    token: SANITY_STUDIO_TOKEN as string,
 
     plugins: [structureTool(), visionTool(), markdownSchema(), codeInput()],
 

@@ -24,12 +24,7 @@ pnpm-debug.log*
 .idea/
 .vercel
 
-.vercel
-
 *.todo
-sanity.config.ts
-# sanity.cli.ts
-sanity.config.ts
 
 # Local Netlify folder
 .netlify

@@ -1,13 +1,16 @@
 {
     "name": "Astro + Sanity Dev Container",
-    "image": "mcr.microsoft.com/devcontainers/javascript-node:latest",
+    "image": "mcr.microsoft.com/devcontainers/typescript-node",
     "features": {
-        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "20"
+        },
+        "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers/features/pnpm:1": {}
     },
     "forwardPorts": [
         4321,
-        3333, // For Sanity Studio
-        3000 // Default Astro development port
+        3333
     ],
     "customizations": {
         "vscode": {
@@ -32,48 +35,15 @@
     },
     "containerEnv": {
         "NODE_ENV": "development",
-        "SANITY_STUDIO_PROJECT_ID": "your-sanity-project-id",
-        "SANITY_STUDIO_DATASET": "production",
-        "SANITY_STUDIO_TOKEN": "your-sanity-auth-token",
         "ASTRO_SITE_URL": "http://localhost:3000"
     },
-    "postCreateCommand": "npm install && npm run dev",
-    "initializeCommand": "sanity init --project your-project-id --dataset production",
-    "mounts": [
-        "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
-        "source=${localWorkspaceFolder}/sanity-studio,target=/workspace/sanity-studio,type=bind"
-    ],
-    "remoteUser": "node",
+    "postCreateCommand": "pnpm install && ./create-env-file.sh",
     "portsAttributes": {
-        "3000": {
-            "label": "Astro Dev Server"
-        },
         "3333": {
             "label": "Sanity Studio"
         },
         "4321": {
-            "label": "Custom Astro Port"
+            "label": "Astro Dev Port"
         }
-    },
-    "runArgs": [
-        "--init"
-    ],
-    "onCreateCommand": "npx astro add sanity && npx astro add tailwind",
-    "capAdd": [
-        "SYS_ADMIN"
-    ],
-    "securityOpt": [
-        "seccomp=unconfined"
-    ],
-    "overrideCommand": false,
-    "features": {
-        "ghcr.io/devcontainers/features/node:1": {
-            "version": "20"
-        },
-        "ghcr.io/devcontainers/features/git:1": {}
-    },
-    "postStartCommand": "npm run sanity:deploy",
-    "otherPorts": [
-        9229 // Node.js debugging port
-    ]
+    }
 }

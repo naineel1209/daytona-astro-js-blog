@@ -3,28 +3,20 @@ import tailwind from "@astrojs/tailwind";
 import sanity from "@sanity/astro";
 import { defineConfig } from 'astro/config';
 import { loadEnv } from "vite";
-import vercel from "@astrojs/vercel/serverless";
-const {
-  SECRET_SANITY_TOKEN,
-  SECRET_SANITY_PROJECT_ID,
-  SECRET_SANITY_DATASET
-} = loadEnv(process.env.NODE_ENV, process.cwd(), "");
-
-// console.log("====================================");
-// console.log(SECRET_SANITY_TOKEN, SECRET_SANITY_PROJECT_ID, SECRET_SANITY_DATASET);
-// console.log("====================================");
+import vercel from "@astrojs/vercel";
+const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_DATASET, SANITY_STUDIO_TOKEN } = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://naineel-blog.vercel.app',
+  site: 'https://daytona-astro-sanity-blog.vercel.app',
   integrations: [tailwind(), react(), sanity({
-    projectId: SECRET_SANITY_PROJECT_ID,
-    dataset: SECRET_SANITY_DATASET,
+    projectId: SANITY_STUDIO_PROJECT_ID,
+    dataset: SANITY_STUDIO_DATASET,
     apiVersion: '2022-07-03',
     //for SSR - true
     useCdn: true,
-    token: SECRET_SANITY_TOKEN
+    token: SANITY_STUDIO_TOKEN
   })],
   output: "server",
   adapter: vercel({

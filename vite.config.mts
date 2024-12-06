@@ -8,5 +8,9 @@ export default defineConfig({
             external: ["tslib"],
         },
         chunkSizeWarningLimit: 600,
-    }
+    },
+    define: {
+        'process.env': {},
+    },
+    envPrefix: 'VITE_',
 })

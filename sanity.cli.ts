@@ -1,11 +1,12 @@
 // sanity.cli.js
 import { defineCliConfig } from "sanity/cli";
 import { loadEnv } from "vite";
-const { SECRET_SANITY_PROJECT_ID, SECRET_SANITY_DATASET } = loadEnv("", process.cwd(), "");
+
+const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_DATASET } = loadEnv("", process.cwd(), "");
 
 export default defineCliConfig({
     api: {
-        projectId: SECRET_SANITY_PROJECT_ID,
-        dataset: SECRET_SANITY_DATASET,
+        projectId: SANITY_STUDIO_PROJECT_ID,
+        dataset: SANITY_STUDIO_DATASET,
     }
 });
