@@ -12,7 +12,7 @@ console.log('Sanity Studio Project ID:', SANITY_STUDIO_PROJECT_ID);
 console.log('Sanity Studio Dataset:', SANITY_STUDIO_DATASET);
 export default defineConfig({
     name: 'default',
-    title: 'naineel-blog',
+    title: 'astro-sanity-studio',
 
     projectId: SANITY_STUDIO_PROJECT_ID as string,
     dataset: SANITY_STUDIO_DATASET as string,

@@ -5,8 +5,8 @@ export async function GET(context: any) {
     const articles = await getSanityRSSArticles();
 
     return rss({
-        title: 'Naineel Soyantar - Blog',
-        description: 'Personal blog of Naineel Soyantar',
+        title: 'Astro + Sanity Blog',
+        description: 'A blog about Daytona + Astro + Sanity CMS built using Daytona + Astro + Sanity CMS.',
         site: context.site,
         stylesheet: '/stylesheet.xsl',
         items: articles.map((article) => {

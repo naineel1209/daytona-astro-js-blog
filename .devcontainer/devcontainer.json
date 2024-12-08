@@ -34,8 +34,7 @@
         }
     },
     "containerEnv": {
-        "NODE_ENV": "development",
-        "ASTRO_SITE_URL": "http://localhost:3000"
+        "NODE_ENV": "development"
     },
     "postCreateCommand": "pnpm install && ./create-env-file.sh",
     "portsAttributes": {
