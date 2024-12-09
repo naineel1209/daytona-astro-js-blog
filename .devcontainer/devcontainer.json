@@ -36,7 +36,10 @@
     "containerEnv": {
         "NODE_ENV": "development"
     },
-    "postCreateCommand": "pnpm install && ./create-env-file.sh",
+    "postCreateCommand": {
+        "install-dependencies": "pnpm install",
+        "env-file-create": "/bin/bash ./create-env-file.sh"
+    },
     "portsAttributes": {
         "3333": {
             "label": "Sanity Studio"
