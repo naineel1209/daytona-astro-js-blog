@@ -34,7 +34,8 @@
         }
     },
     "containerEnv": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "development",
+        "PNPM_HOME": "/tmp/pnpm-store"
     },
     "postCreateCommand": {
         "install-dependencies": "pnpm install",
