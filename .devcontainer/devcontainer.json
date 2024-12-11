@@ -3,10 +3,10 @@
     "image": "mcr.microsoft.com/devcontainers/typescript-node:latest",
     "features": {
         "ghcr.io/devcontainers/features/node:1": {
-            "version": "20"
+            "version": "20",
+            "pnpmVersion": "9.12.2"
         },
-        "ghcr.io/devcontainers/features/git:1": {},
-        "ghcr.io/devcontainers-extra/features/pnpm:2": {}
+        "ghcr.io/devcontainers/features/git:1": {}
     },
     "forwardPorts": [
         4321,
