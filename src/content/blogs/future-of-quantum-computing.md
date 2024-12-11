@@ -3,9 +3,7 @@ title: "The Future of Quantum Computing"
 description: "How quantum computing is set to revolutionize technology and science."
 author: "Jane Smith"
 date: "2024-07-10"
-image: "https://picsum.photos/1980/1080"
 tags: ["quantum computing", "technology", "science", "innovation"]
-slug: "the-future-of-quantum-computing"
 ---
 
 ## The Future of Quantum Computing
@@ -39,7 +37,3 @@ console.log(Fransesca);
 The future of quantum computing is bright, with ongoing research promising to unlock new frontiers in technology and science. As we continue to explore and develop this field, the possibilities are truly limitless.
 
 ---
-
-_Author: Jane Smith_  
-_Date: July 10, 2024_  
-_Tags: quantum computing, technology, science, innovation_
