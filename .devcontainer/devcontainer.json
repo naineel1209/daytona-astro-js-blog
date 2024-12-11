@@ -37,7 +37,7 @@
         "PNPM_HOME": "/tmp/pnpm-store"
     },
     "postCreateCommand": {
-        "install-dependencies": "pnpm install",
+        "install-dependencies": "pnpm config set store-dir /pnpm-store && pnpm install",
         "env-file-create": "/bin/bash ./create-env-file.sh"
     },
     "portsAttributes": {
