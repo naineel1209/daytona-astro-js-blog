@@ -23,7 +23,6 @@ if (Astro.params.slug) {
   article = await getSanityArticleBySlug(Astro.params.slug);
 }
 
-//TODO this will never run as empty slug will be sent to the
 if (!article) {
   return Astro.redirect("/404");
 }
@@ -41,8 +40,6 @@ const {
   views,
   imageUrl,
 } = article;
-
-//TODO - add a links maker in an article
 ---
 
 <MainLayout title={title} margin_small={true}>
@@ -59,7 +56,7 @@ const {
 
         <img
           src={imageUrl as string}
-          alt={title + " cover"}
+          alt={`${title} cover`}
           class="w-full h-80 mx-auto mt-[2rem] mb-[1rem] rounded-tl-lg rounded-tr-lg object-cover"
         />
         <div class="w-full text-center">
@@ -83,7 +80,6 @@ const {
           />
         </div>
       </div>
-      <!-- TODO - add a links maker in an article -->
       <div class="markdown-body mt-2">
         <div class="border-b-2" id="toc"></div>
         <Markdown
@@ -123,7 +119,10 @@ const {
         toc.appendChild(tocList);
 
         headings.forEach((heading) => {
-          const id = heading.id;
+          const id =
+            heading.id ||
+            heading.textContent.replace(/\s+/g, "-").toLowerCase();
+          heading.id = id; // Ensure heading has an id
           const text = heading.innerText;
           const level = parseInt(heading.tagName[1]);
           const listItem = document.createElement("li");
@@ -135,11 +134,6 @@ const {
           tocList.appendChild(listItem);
         });
 
-        // let currLevel = 2; // h2
-        // let currList = tocList;
-
-        // if the currLevel is greater than the heading level, we need the child to the currList of the last item or else we need to create a new list
-
         document.getElementById("toc").appendChild(toc);
       }
 
@@ -147,17 +141,13 @@ const {
 
       const pres = document.querySelectorAll("pre");
 
-      console.log(pres);
-
       pres.forEach((pre) => {
         const button = document.createElement("button");
         button.innerText = "Copy";
-        pre.classList.add("relative");
         button.className = "copy-button";
 
         button.addEventListener("click", () => {
-          const childCode = pre.children[0];
-          const code = childCode.innerText;
+          const code = pre.querySelector("code").innerText;
           navigator.clipboard.writeText(code).then(() => {
             button.innerText = "Copied!";
             setTimeout(() => {

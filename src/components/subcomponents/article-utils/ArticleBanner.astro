@@ -38,13 +38,11 @@ const {
         class="text-2xl font-bold text-purple-700 mb-2">{article.title}</a
       >
       <p class="text-lg text-gray-700 mb-4">{article.description}</p>
-      <a href={`/about-me`} class="">
-        <span
-          class="text-lg font-bold text-purple-700 my-2 hover:bg-purple-700 hover:text-white transition-all duration-200 p-2 hover:rounded-md"
-        >
-          {article.author.name}
-        </span>
-      </a>
+      <span
+        class="text-center text-lg font-bold text-purple-700 my-2 hover:bg-purple-700 hover:text-white transition-all duration-200 p-2 hover:rounded-md"
+      >
+        {article.author.name}
+      </span>
       <Tags
         tags={article.tags}
         class:list={["my-2 p-2 border-t-2 border-gray-300"]}

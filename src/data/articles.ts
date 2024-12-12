@@ -1,4 +1,4 @@
-import { getCollection, getEntryBySlug } from "astro:content";
+import { getCollection, getEntry, getEntryBySlug } from "astro:content";
 // @ts-ignore
 import { sanityClient } from 'sanity:client';
 import { ARTICLES_PER_PAGE, LATEST_ARTICLE_LIMIT, STARRED_ARTICLE_LIMIT } from "../constants";
@@ -75,7 +75,7 @@ export const getSanityArticlesBySearch = async (search: string, limit?: number, 
 }
 
 export const getArticle = async (slug: string) => {
-  const articles = await getEntryBySlug("blogs", slug);
+  const articles = await getEntry("blogs", slug);
 
   return articles;
 };

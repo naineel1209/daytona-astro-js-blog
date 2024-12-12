@@ -17,18 +17,17 @@ const articles = await getSanityStarredArticles();
     </div>
 
     {
-      articles.length === 0 && (
+      articles && articles.length === 0 ? (
         <div class="text-center">
           <p class="text-2xl font-semibold text-slate-900">No articles found</p>
         </div>
+      ) : (
+        <div class="grid grid-cols-1 gap-[1rem] place-items-center">
+          {articles?.map((article) => (
+            <ArticleBanner article={article} />
+          ))}
+        </div>
       )
     }
-    <div class="grid grid-cols-1 gap-[1rem] place-items-center">
-      {
-        articles.map((article) => {
-          return <ArticleBanner article={article} />;
-        })
-      }
-    </div>
   </div>
 </MainLayout>

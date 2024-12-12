@@ -1,12 +1,16 @@
 ---
 import { getSanityLatestArticles } from "../../../data/articles.ts";
+import { TArticles } from "../../../types/types";
 import HighlightedHeading from "../../utils/HighlightedHeading.astro";
-import ArticleBanner from "../article-utils//ArticleBanner.astro";
+import ArticleBanner from "../article-utils/ArticleBanner.astro";
 
-let articles = await getSanityLatestArticles();
+let articles: TArticles[] = [];
+try {
+  articles = await getSanityLatestArticles();
+} catch (error) {
+  console.error("Error fetching articles:", error);
+}
 ---
-
-<script></script>
 
 <div class="w-[80%] border-t-2 border-r-2 border-blue-300 p-[3rem] pt-[1rem]">
   <div class="flex items-center justify-between pb-[2rem]">
@@ -14,9 +18,13 @@ let articles = await getSanityLatestArticles();
   </div>
   <div class="grid grid-rows-1 gap-[1rem] place-items-center">
     {
-      articles.map((article) => {
-        return <ArticleBanner article={article} />;
-      })
+      articles.length > 0 ? (
+        articles.map((article) => <ArticleBanner article={article} />)
+      ) : (
+        <p class="text-center text-gray-500">
+          No articles available at the moment.
+        </p>
+      )
     }
   </div>
 </div>
