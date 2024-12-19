@@ -35,7 +35,7 @@ benefits of Daytona (our fav. Development Environment Manager
    you are working on:
 
 ```bash
-daytona create <REPO_URL>
+daytona create https://github.com/daytonaio/sample-astro-blog.git
 ```
 
 2. Setting up environment variables for Sanity.io: The above command will set up
