@@ -1,0 +1,20 @@
+---
+import { getArticles, getSanityStarredArticles } from "../../../data/articles";
+import HighlightedHeading from "../../utils/HighlightedHeading.astro";
+import StarredArticleBanner from "../article-utils/StarredArticleBanner.astro";
+
+const { class: classList } = Astro.props;
+
+const articles = await getSanityStarredArticles();
+---
+
+<div class={classList + " px-5 pt-5"}>
+  <HighlightedHeading title="Starred Articles" />
+  <div class="grid grid-rows-1 gap-5">
+    {
+      articles.map((article) => {
+        return <StarredArticleBanner article={article} />;
+      })
+    }
+  </div>
+</div>

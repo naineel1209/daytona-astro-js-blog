@@ -1,0 +1,41 @@
+---
+
+---
+
+<style>
+  @keyframes heart-beating {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(2);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .heart {
+    animation: heart-beating infinite 1s linear;
+  }
+</style>
+<div
+  class="w-[100%] p-[1rem] text-white bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-center"
+  style="font:family: 'Montserrat', sans-serif; font-weight: 700; font-optical-sizing: auto; font-style: normal; letter-spacing: 0.2rem;"
+>
+  Built with
+  <span
+    class="mx-[1rem]"
+    onmouseover="this.classList.add('heart')"
+    onmouseleave="this.classList.remove('heart')">❤️</span
+  > by <a
+    href="https://github.com/naineel1209"
+    class="px-2"
+    target="_blank"
+    rel="noreferrer"
+  >
+    Naineel Soyantar For Daytona + Astro + Sanity
+  </a>
+</div>

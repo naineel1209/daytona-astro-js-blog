@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+import type { TArticleAuthor } from "../../../types/types";
+
+const author: TArticleAuthor = Astro.props.author;
+---
+
+<div class="author-banner">
+  <div class="image-container">
+    <img
+      src={author.imageUrl as string}
+      alt={author.name}
+      width={400}
+      height={200}
+    />
+  </div>
+  <div class="content">
+    <a href={`/authors/${author.slug.current}`}>{author.name}</a>
+    <p>{author.shortBio}</p>
+  </div>
+</div>

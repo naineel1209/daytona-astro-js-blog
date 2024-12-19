@@ -1,0 +1,12 @@
+---
+import ArticlesBox from "../components/ArticlesBox.astro";
+import HeroComponent from "../components/react/Hero.tsx";
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout title="Home">
+  <div>
+    <HeroComponent client:only="react" />
+    <ArticlesBox />
+  </div>
+</MainLayout>

@@ -1,0 +1,60 @@
+---
+import CodeSnippet from "../../components/subcomponents/code-snippets/code-snippet.astro";
+import HighlightedHeading from "../../components/utils/HighlightedHeading.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+---
+
+<MainLayout title="Home">
+  <HighlightedHeading title="Code Snippets" />
+
+  <div class="flex flex-col items-start justify-center">
+    <p class="text-center text-lg">
+      Here you will find a collection of code snippets that I have found useful
+      in my projects.
+    </p>
+    <div class="py-3">
+      <CodeSnippet />
+    </div>
+  </div>
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const pres = document.querySelectorAll("pre");
+
+      pres.forEach((pre) => {
+        const button = document.createElement("button");
+        button.innerText = "Copy";
+        pre.classList.add("relative");
+        button.className = "copy-button";
+
+        button.addEventListener("click", () => {
+          const childCode = pre.children[0];
+          const code = childCode.innerText;
+          navigator.clipboard.writeText(code).then(() => {
+            button.innerText = "Copied!";
+            setTimeout(() => {
+              button.innerText = "Copy";
+            }, 2000);
+          });
+        });
+
+        pre.style.position = "relative";
+        pre.appendChild(button);
+      });
+    });
+  </script>
+  <style is:global>
+    .copy-button {
+      background-color: #007bff;
+      color: white;
+
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+  </style>
+</MainLayout>

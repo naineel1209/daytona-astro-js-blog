@@ -1,0 +1,51 @@
+{
+    "name": "Astro + Sanity Dev Container",
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:latest",
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "20",
+            "pnpmVersion": "9.12.2"
+        },
+        "ghcr.io/devcontainers/features/git:1": {}
+    },
+    "forwardPorts": [
+        4321,
+        3333
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "astro-build.astro-vscode",
+                "esbenp.prettier-vscode",
+                "dbaeumer.vscode-eslint",
+                "eamodio.gitlens",
+                "styled-components.vscode-styled-components",
+                "ms-vscode.vscode-typescript-next"
+            ],
+            "settings": {
+                "astro.enableAutoImport": true,
+                "editor.formatOnSave": true,
+                "typescript.tsdk": "/node_modules/typescript/lib",
+                "eslint.format.enable": true,
+                "files.eol": "\n",
+                "prettier.requireConfig": true
+            }
+        }
+    },
+    "containerEnv": {
+        "NODE_ENV": "development",
+        "PNPM_HOME": "/tmp/pnpm-store"
+    },
+    "postCreateCommand": {
+        "install-dependencies": "pnpm config set store-dir /tmp/pnpm-store && pnpm install",
+        "env-file-create": "/bin/bash ./create-env-file.sh"
+    },
+    "portsAttributes": {
+        "3333": {
+            "label": "Sanity Studio"
+        },
+        "4321": {
+            "label": "Astro Dev Port"
+        }
+    }
+}

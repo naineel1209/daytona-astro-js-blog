@@ -1,0 +1,46 @@
+---
+import Search from "../../components/Search.astro";
+import ArticleBanner from "../../components/subcomponents/article-utils/ArticleBanner.astro";
+import HighlightedHeading from "../../components/utils/HighlightedHeading.astro";
+import { getSanityArticles } from "../../data/articles";
+import MainLayout from "../../layouts/MainLayout.astro";
+import type { TArticles } from "../../types/types";
+
+// Safely fetch limit and page parameters from the URL, with fallbacks
+const limit = Number(Astro.url.searchParams.get("limit")) || 10; // Default limit
+const page = Number(Astro.url.searchParams.get("page")) || 1; // Default page
+
+let sanityArticles: TArticles[] = [];
+try {
+  sanityArticles = await getSanityArticles(limit, page);
+} catch (error) {
+  console.error("Error fetching articles:", error);
+}
+---
+
+<!-- !You have to manually update the output of the astro project by setting output to server or static or hybrid depending on the requirements -->
+<MainLayout title="Articles">
+  <div class="my-[2rem] w-[100%]">
+    <Search prefillVal={""} />
+  </div>
+  <div
+    class="border-t-2 border-r-2 rounded-tr-[1rem] border-blue-300 p-[3rem] pt-[1rem]"
+  >
+    <div class="flex items-center justify-between pb-[2rem]">
+      <HighlightedHeading title="Articles" />
+    </div>
+    <div class="grid grid-cols-1 gap-[1rem] place-items-center">
+      {
+        sanityArticles.length > 0 ? (
+          sanityArticles.map((article: TArticles) => (
+            <ArticleBanner article={article} />
+          ))
+        ) : (
+          <p class="text-gray-500 text-center">
+            No articles available at the moment. Please check back later!
+          </p>
+        )
+      }
+    </div>
+  </div>
+</MainLayout>

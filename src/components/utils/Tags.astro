@@ -1,0 +1,35 @@
+---
+const { tags, class: classList, starred } = Astro.props;
+const shiftedTags = [...tags];
+
+if (starred) {
+  shiftedTags.unshift("starred");
+}
+---
+
+<div class={`${classList}` + " flex items-center justify-center gap-[.5rem]"}>
+  {
+    shiftedTags.map((tag: string) => {
+      if (tag === "starred") {
+        return (
+          // TODO - add a link to starred articles
+          <a
+            href={"/articles/starred"}
+            class="bg-yellow-100 text-yellow-500 px-2 py-1 rounded-md text-sm hover:scale-105 transition-all duration-200 hover:bg-yellow-500 hover:text-yellow-100 font-medium cursor-pointer"
+          >
+            {tag}
+          </a>
+        );
+      }
+
+      return (
+        <a
+          href={"/articles/search/" + tag}
+          class="bg-blue-100 text-blue-500 px-2 py-1 rounded-md text-sm hover:scale-105 transition-all duration-200 hover:bg-blue-500 hover:text-blue-100 font-medium cursor-pointer"
+        >
+          {tag}
+        </a>
+      );
+    })
+  }
+</div>
